@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animations_gallery/gallery_page_selector.dart';
+import 'package:flutter_animations_gallery/gallery_navigation/gallery_page_selector.dart';
 
 class PageScaffold extends StatelessWidget {
   const PageScaffold({

@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/animation_controller_state.dart';
-import 'package:flutter_animations_gallery/page_scaffold.dart';
+import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final _allCurves = <String, Curve>{

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animations_gallery/gallery_page_selector.dart';
+import 'package:flutter_animations_gallery/gallery_navigation/gallery_page_selector.dart';
 import 'package:flutter_animations_gallery/samples/theming.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,6 +10,7 @@ void main() {
 class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // watch all application state variables
     final color = ref.watch(colorProvider);
     final selectedPageBuilder = ref.watch(selectedPageBuilderProvider);
 
