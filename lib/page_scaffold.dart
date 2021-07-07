@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animations_gallery/gallery_page_selector.dart';
 
 class PageScaffold extends StatelessWidget {
   const PageScaffold({
@@ -19,6 +20,7 @@ class PageScaffold extends StatelessWidget {
         actions: actions,
       ),
       body: body,
+      drawer: GalleryPageSelector(),
     );
   }
 }
