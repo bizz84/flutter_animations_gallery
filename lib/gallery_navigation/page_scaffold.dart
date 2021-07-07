@@ -20,7 +20,6 @@ class PageScaffold extends StatelessWidget {
         actions: actions,
       ),
       body: body,
-      drawer: GalleryPageSelector(),
     );
   }
 }

@@ -158,7 +158,12 @@ class CurveListTile extends StatelessWidget {
             ),
           ),
         Center(
-            child: Text(title, style: Theme.of(context).textTheme.subtitle1!)),
+          child: Text(
+            title,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.subtitle1!,
+          ),
+        ),
         GestureDetector(
           onTap: onSelected,
           child: Container(

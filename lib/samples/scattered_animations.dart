@@ -73,29 +73,31 @@ class _StaggeredAnimationsPageState
     ];
     return PageScaffold(
         title: 'Staggered animations',
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text('How to make pasta',
-                  style: Theme.of(context).textTheme.headline5),
-            ),
-            ElevatedButton(
-              onPressed: _toggleAnimation,
-              child: Text(_isShowing ? 'Hide' : 'Show',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline5!
-                      .copyWith(color: Colors.white)),
-            ),
-            SizedBox(height: 16),
-            for (var title in titles)
-              StepWidgetTile(
-                animation: animationController,
-                title: title,
-                index: titles.indexOf(title),
-              )
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text('How to make pasta',
+                    style: Theme.of(context).textTheme.headline5),
+              ),
+              ElevatedButton(
+                onPressed: _toggleAnimation,
+                child: Text(_isShowing ? 'Hide' : 'Show',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline5!
+                        .copyWith(color: Colors.white)),
+              ),
+              SizedBox(height: 16),
+              for (var title in titles)
+                StepWidgetTile(
+                  animation: animationController,
+                  title: title,
+                  index: titles.indexOf(title),
+                )
+            ],
+          ),
         ));
   }
 }

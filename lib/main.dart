@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/gallery_page_selector.dart';
+import 'package:flutter_animations_gallery/gallery_navigation/split_view.dart';
 import 'package:flutter_animations_gallery/samples/theming.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,9 +21,10 @@ class MyApp extends ConsumerWidget {
       theme: ThemeData(
         primarySwatch: color,
       ),
-      home: Builder(
-        builder: (context) => selectedPageBuilder(context),
-      ),
+      home: SplitView(),
+      //  Builder(
+      //   builder: (context) => selectedPageBuilder(context),
+      // ),
     );
   }
 }

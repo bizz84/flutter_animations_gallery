@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
 import 'package:flutter_animations_gallery/samples/animated_positioned.dart';
 import 'package:flutter_animations_gallery/samples/curves.dart';
 import 'package:flutter_animations_gallery/samples/scattered_animations.dart';
@@ -26,30 +27,9 @@ class GalleryPageSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.85,
-      child: Drawer(
-        child: Column(children: <Widget>[
-          DrawerHeader(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: const <Widget>[
-                Text(
-                  'Gallery',
-                  style: TextStyle(
-                    fontSize: 22.0,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-            ),
-          ),
-          Expanded(child: GalleryPagesList()),
-        ]),
-      ),
+    return PageScaffold(
+      title: 'Gallery',
+      body: GalleryPagesList(),
     );
   }
 }
