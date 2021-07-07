@@ -87,7 +87,7 @@ class _CurvesPageState extends AnimationControllerState<CurvesPage> {
           final curveKey = allCurves.keys.toList()[index];
           return CurveListTile(
             curve: allCurves[curveKey]!,
-            curveName: curveKey,
+            title: curveKey,
             showAnimation: _animateAllCurves || index == _selectedIndex,
             animation: animationController,
             onSelected: () => setState(() => _selectedIndex = index),
@@ -106,9 +106,9 @@ class CurveListTile extends StatelessWidget {
   CurveListTile({
     Key? key,
     required this.curve,
-    required this.curveName,
+    required this.title,
     required this.showAnimation,
-    required this.animation,
+    required Animation<double> animation,
     this.onSelected,
   })  : curvedAnimation = tween.animate(CurvedAnimation(
           parent: animation,
@@ -116,9 +116,8 @@ class CurveListTile extends StatelessWidget {
         )),
         super(key: key);
   final Curve curve;
-  final String curveName;
+  final String title;
   final bool showAnimation;
-  final Animation<double> animation;
   final Animation<double> curvedAnimation;
   final VoidCallback? onSelected;
 
@@ -144,7 +143,8 @@ class CurveListTile extends StatelessWidget {
               },
             ),
           ),
-        Center(child: Text(curveName)),
+        Center(
+            child: Text(title, style: Theme.of(context).textTheme.subtitle1!)),
         GestureDetector(
           onTap: onSelected,
           child: Container(

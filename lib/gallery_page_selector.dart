@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/samples/animated_positioned.dart';
 import 'package:flutter_animations_gallery/samples/curves.dart';
+import 'package:flutter_animations_gallery/samples/scattered_animations.dart';
 import 'package:flutter_animations_gallery/samples/theming.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,6 +9,7 @@ final availablePages = <String, WidgetBuilder>{
   'Curves': (_) => CurvesPage(),
   'Theming': (_) => ThemeSelectionPage(),
   'AnimatedPositioned': (_) => AnimatedPositionedPage(),
+  'Staggered Animations': (_) => StaggeredAnimationsPage(),
 };
 
 final selectedPageProvider = StateProvider<String>((ref) {
