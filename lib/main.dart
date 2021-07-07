@@ -21,7 +21,11 @@ class MyApp extends ConsumerWidget {
       theme: ThemeData(
         primarySwatch: color,
       ),
-      home: SplitView(),
+      home: Builder(
+        builder: (context) => SplitView(
+          contentBuilder: (context) => selectedPageBuilder(context),
+        ),
+      ),
       //  Builder(
       //   builder: (context) => selectedPageBuilder(context),
       // ),
