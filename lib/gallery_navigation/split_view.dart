@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animations_gallery/gallery_navigation/gallery_menu.dart';
+import 'package:flutter_animations_gallery/gallery_navigation/gallery_container.dart';
+import 'package:flutter_animations_gallery/gallery_navigation/gallery_toggle_button.dart';
 
 class SplitView extends StatefulWidget {
   const SplitView({Key? key, required this.contentBuilder}) : super(key: key);
@@ -12,6 +13,7 @@ class SplitView extends StatefulWidget {
 class _SplitViewState extends State<SplitView> {
   static const duration = Duration(milliseconds: 250);
   static const curve = Curves.easeInOutCubic;
+  static const galleryContainerWidth = 240.0;
 
   bool _showMenu = false;
   void _toggleMenu() {
@@ -25,7 +27,12 @@ class _SplitViewState extends State<SplitView> {
       // wide screen: return split-view menu on the left, content on the right
       return Row(
         children: [
-          GalleryContainer(),
+          SizedBox(
+            width: galleryContainerWidth,
+            child: GalleryContainer(
+              onPageSelected: _toggleMenu,
+            ),
+          ),
           Expanded(child: widget.contentBuilder(context)),
         ],
       );
@@ -44,8 +51,8 @@ class _SplitViewState extends State<SplitView> {
           AnimatedPositioned(
             duration: duration,
             curve: curve,
-            left: _showMenu ? 0 : -GalleryContainer.width,
-            width: GalleryContainer.width,
+            left: _showMenu ? 0 : -galleryContainerWidth,
+            width: galleryContainerWidth,
             top: 0,
             bottom: 0,
             child: GalleryContainer(
@@ -55,7 +62,7 @@ class _SplitViewState extends State<SplitView> {
           AnimatedPositioned(
             duration: duration,
             curve: curve,
-            left: _showMenu ? GalleryContainer.width : 0,
+            left: _showMenu ? galleryContainerWidth : 0,
             bottom: 0,
             child: SafeArea(
               child: GalleryToggleButton(
@@ -67,56 +74,5 @@ class _SplitViewState extends State<SplitView> {
         ],
       );
     }
-  }
-}
-
-class GalleryToggleButton extends StatelessWidget {
-  const GalleryToggleButton({Key? key, required this.isShowing, this.onPressed})
-      : super(key: key);
-  final bool isShowing;
-  final VoidCallback? onPressed;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 48,
-      height: 48,
-      decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
-        border: Border.all(color: Colors.black12),
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(24.0),
-          bottomRight: Radius.circular(24.0),
-        ),
-      ),
-      child: GestureDetector(
-        behavior: HitTestBehavior.translucent,
-        onTap: onPressed,
-        child: Icon(
-          isShowing ? Icons.arrow_back : Icons.arrow_forward,
-          color: Colors.white,
-        ),
-      ),
-    );
-  }
-}
-
-class GalleryContainer extends StatelessWidget {
-  const GalleryContainer({Key? key, this.onPageSelected}) : super(key: key);
-  final VoidCallback? onPageSelected;
-  static const width = 240.0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      decoration: BoxDecoration(
-        border: Border(
-          right: BorderSide(width: 0.5, color: Colors.black12),
-        ),
-      ),
-      child: GalleryMenu(
-        onSelected: (_) => onPageSelected?.call(),
-      ),
-    );
   }
 }

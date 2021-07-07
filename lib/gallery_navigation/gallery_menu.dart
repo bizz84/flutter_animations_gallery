@@ -23,8 +23,8 @@ final selectedPageBuilderProvider = Provider<WidgetBuilder>((ref) {
 });
 
 class GalleryMenu extends ConsumerWidget {
-  GalleryMenu({Key? key, this.onSelected}) : super(key: key);
-  final ValueChanged<String>? onSelected;
+  GalleryMenu({Key? key, this.onPageSelected}) : super(key: key);
+  final VoidCallback? onPageSelected;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -44,7 +44,7 @@ class GalleryMenu extends ConsumerWidget {
               onTap: () {
                 if (ref.read(selectedPageKeyProvider).state != pageName) {
                   ref.read(selectedPageKeyProvider).state = pageName;
-                  onSelected?.call(pageName);
+                  onPageSelected?.call();
                 }
               },
             )
