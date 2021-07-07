@@ -2,16 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/page_scaffold.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final themeIndexProvider = StateProvider<int>((ref) {
-  return 0;
-});
-
-final allDarkColors = <String, MaterialColor>{
+final _allAvailableColors = <String, MaterialColor>{
   'red': Colors.red,
   'indigo': Colors.indigo,
   'green': Colors.green,
   'brown': Colors.brown,
 };
+
+final colorKeyProvider = StateProvider<String>((ref) {
+  return _allAvailableColors.keys.first;
+});
+
+final colorProvider = Provider<MaterialColor>((ref) {
+  final colorKey = ref.watch(colorKeyProvider).state;
+  return _allAvailableColors[colorKey]!;
+});
 
 class ThemeSelectionPage extends StatelessWidget {
   const ThemeSelectionPage({Key? key}) : super(key: key);
@@ -22,14 +27,14 @@ class ThemeSelectionPage extends StatelessWidget {
       title: 'Theme Selection',
       body: Center(
         child: ListView.builder(
-          itemCount: allDarkColors.length,
+          itemCount: _allAvailableColors.length,
           itemBuilder: (context, index) {
             return Consumer(builder: (context, ref, _) {
-              final colorName = allDarkColors.keys.toList()[index];
+              final colorName = _allAvailableColors.keys.toList()[index];
               return ThemeListTile(
-                color: allDarkColors[colorName]!,
+                color: _allAvailableColors[colorName]!,
                 colorName: colorName,
-                onSelected: () => ref.read(themeIndexProvider).state = index,
+                onSelected: () => ref.read(colorKeyProvider).state = colorName,
               );
             });
           },

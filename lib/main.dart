@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/gallery_page_selector.dart';
 import 'package:flutter_animations_gallery/samples/theming.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_animations_gallery/samples/curves.dart';
 
 void main() {
   runApp(ProviderScope(child: MyApp()));
@@ -11,18 +10,17 @@ void main() {
 class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final themeIndex = ref.watch(themeIndexProvider);
-    final colorKey = allDarkColors.keys.toList()[themeIndex.state];
-    final selectedPage = ref.watch(selectedPageProvider);
+    final color = ref.watch(colorProvider);
+    final selectedPageBuilder = ref.watch(selectedPageBuilderProvider);
 
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: allDarkColors[colorKey],
+        primarySwatch: color,
       ),
       home: Builder(
-        builder: (context) => availablePages[selectedPage.state]!(context),
+        builder: (context) => selectedPageBuilder(context),
       ),
     );
   }

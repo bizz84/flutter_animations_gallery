@@ -12,8 +12,13 @@ final availablePages = <String, WidgetBuilder>{
   'Staggered Animations': (_) => StaggeredAnimationsPage(),
 };
 
-final selectedPageProvider = StateProvider<String>((ref) {
+final selectedPageKeyProvider = StateProvider<String>((ref) {
   return availablePages.keys.first;
+});
+
+final selectedPageBuilderProvider = Provider<WidgetBuilder>((ref) {
+  final selectedPageKey = ref.watch(selectedPageKeyProvider).state;
+  return availablePages[selectedPageKey]!;
 });
 
 class GalleryPageSelector extends StatelessWidget {
@@ -54,7 +59,7 @@ class GalleryPagesList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedPage = ref.watch(selectedPageProvider);
+    final selectedPage = ref.watch(selectedPageKeyProvider);
     final selectedPageName = selectedPage.state;
     return ListView(
       children: <Widget>[
@@ -66,8 +71,8 @@ class GalleryPagesList extends ConsumerWidget {
             ),
             title: Text(pageName),
             onTap: () {
-              if (ref.read(selectedPageProvider).state != pageName) {
-                ref.read(selectedPageProvider).state = pageName;
+              if (ref.read(selectedPageKeyProvider).state != pageName) {
+                ref.read(selectedPageKeyProvider).state = pageName;
               }
             },
           )

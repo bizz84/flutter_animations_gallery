@@ -3,8 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/animation_controller_state.dart';
 import 'package:flutter_animations_gallery/page_scaffold.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final allCurves = <String, Curve>{
+final _allCurves = <String, Curve>{
   'linear': Curves.linear,
   'decelerate': Curves.decelerate,
   'fastLinearToSlowEaseIn': Curves.fastLinearToSlowEaseIn,
@@ -48,6 +49,15 @@ final allCurves = <String, Curve>{
   'elasticInOut': Curves.elasticInOut,
 };
 
+final curveKeyProvider = StateProvider<String>((ref) {
+  return _allCurves.keys.first;
+});
+
+final curveProvider = Provider<Curve>((ref) {
+  final curveKey = ref.watch(curveKeyProvider).state;
+  return _allCurves[curveKey]!;
+});
+
 class CurvesPage extends StatefulWidget {
   const CurvesPage({Key? key}) : super(key: key);
 
@@ -58,7 +68,6 @@ class CurvesPage extends StatefulWidget {
 
 class _CurvesPageState extends AnimationControllerState<CurvesPage> {
   _CurvesPageState(Duration duration) : super(duration);
-  int _selectedIndex = 0;
   bool _animateAllCurves = false;
 
   @override
@@ -82,16 +91,21 @@ class _CurvesPageState extends AnimationControllerState<CurvesPage> {
                 setState(() => _animateAllCurves = !_animateAllCurves)),
       ],
       body: ListView.separated(
-        itemCount: allCurves.keys.length,
+        itemCount: _allCurves.keys.length,
         itemBuilder: (context, index) {
-          final curveKey = allCurves.keys.toList()[index];
-          return CurveListTile(
-            curve: allCurves[curveKey]!,
-            title: curveKey,
-            showAnimation: _animateAllCurves || index == _selectedIndex,
-            animation: animationController,
-            onSelected: () => setState(() => _selectedIndex = index),
-          );
+          return Consumer(builder: (context, ref, _) {
+            final curveKey = _allCurves.keys.toList()[index];
+            final selectedCurveKey = ref.watch(curveKeyProvider);
+            return CurveListTile(
+              curve: _allCurves[curveKey]!,
+              title: curveKey,
+              showAnimation:
+                  _animateAllCurves || curveKey == selectedCurveKey.state,
+              animation: animationController,
+              onSelected: () => ref.read(curveKeyProvider).state =
+                  curveKey, // setState(() => _selectedIndex = index),
+            );
+          });
         },
         separatorBuilder: (context, index) => Container(
           color: Colors.black12,
