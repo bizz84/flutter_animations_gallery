@@ -1,37 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animations_gallery/gallery_navigation/gallery_container.dart';
-import 'package:flutter_animations_gallery/gallery_navigation/gallery_toggle_button.dart';
+import 'package:flutter_animations_gallery/gallery_navigation/split_view_show_menu_button.dart';
 
 class SplitView extends StatefulWidget {
-  const SplitView({Key? key, required this.contentBuilder}) : super(key: key);
+  const SplitView(
+      {Key? key, required this.menuBuilder, required this.contentBuilder})
+      : super(key: key);
+  final WidgetBuilder menuBuilder;
   final WidgetBuilder contentBuilder;
 
   @override
-  _SplitViewState createState() => _SplitViewState();
+  SplitViewState createState() => SplitViewState();
 }
 
-class _SplitViewState extends State<SplitView> {
+class SplitViewState extends State<SplitView> {
   static const duration = Duration(milliseconds: 250);
   static const curve = Curves.easeInOutCubic;
-  static const galleryContainerWidth = 240.0;
+  static const menuContainerWidth = 240.0;
+  static const splitViewBreakpoint = 600.0;
 
   bool _showMenu = false;
-  void _toggleMenu() {
+  void toggleMenu() {
     setState(() => _showMenu = !_showMenu);
   }
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    if (screenWidth >= 600) {
+    if (screenWidth >= splitViewBreakpoint) {
       // wide screen: return split-view menu on the left, content on the right
       return Row(
         children: [
           SizedBox(
-            width: galleryContainerWidth,
-            child: GalleryContainer(
-              onPageSelected: _toggleMenu,
-            ),
+            width: menuContainerWidth,
+            child: widget.menuBuilder(context),
           ),
           Expanded(child: widget.contentBuilder(context)),
         ],
@@ -51,23 +52,21 @@ class _SplitViewState extends State<SplitView> {
           AnimatedPositioned(
             duration: duration,
             curve: curve,
-            left: _showMenu ? 0 : -galleryContainerWidth,
-            width: galleryContainerWidth,
+            left: _showMenu ? 0 : -menuContainerWidth,
+            width: menuContainerWidth,
             top: 0,
             bottom: 0,
-            child: GalleryContainer(
-              onPageSelected: _toggleMenu,
-            ),
+            child: widget.menuBuilder(context),
           ),
           AnimatedPositioned(
             duration: duration,
             curve: curve,
-            left: _showMenu ? galleryContainerWidth : 0,
+            left: _showMenu ? menuContainerWidth : 0,
             bottom: 0,
             child: SafeArea(
-              child: GalleryToggleButton(
+              child: SplitViewShowMenuButton(
                 isShowing: _showMenu,
-                onPressed: _toggleMenu,
+                onPressed: toggleMenu,
               ),
             ),
           ),

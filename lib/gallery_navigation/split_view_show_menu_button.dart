@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class GalleryToggleButton extends StatelessWidget {
-  const GalleryToggleButton({Key? key, required this.isShowing, this.onPressed})
+class SplitViewShowMenuButton extends StatelessWidget {
+  const SplitViewShowMenuButton(
+      {Key? key, required this.isShowing, this.onPressed})
       : super(key: key);
   final bool isShowing;
   final VoidCallback? onPressed;

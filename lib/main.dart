@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animations_gallery/gallery_navigation/gallery_container.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/gallery_menu.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/split_view.dart';
 import 'package:flutter_animations_gallery/samples/theming.dart';
@@ -9,6 +10,7 @@ void main() {
 }
 
 class MyApp extends ConsumerWidget {
+  final _splitViewKey = GlobalKey<SplitViewState>();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // watch all application state variables
@@ -23,12 +25,13 @@ class MyApp extends ConsumerWidget {
       ),
       home: Builder(
         builder: (context) => SplitView(
+          key: _splitViewKey,
+          menuBuilder: (context) => GalleryContainer(
+            onPageSelected: () => _splitViewKey.currentState?.toggleMenu(),
+          ),
           contentBuilder: (context) => selectedPageBuilder(context),
         ),
       ),
-      //  Builder(
-      //   builder: (context) => selectedPageBuilder(context),
-      // ),
     );
   }
 }
