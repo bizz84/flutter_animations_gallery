@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animations_gallery/gallery_navigation/gallery_page_selector.dart';
+import 'package:flutter_animations_gallery/gallery_navigation/gallery_menu.dart';
 
 class SplitView extends StatefulWidget {
   const SplitView({Key? key, required this.contentBuilder}) : super(key: key);
@@ -48,13 +48,15 @@ class _SplitViewState extends State<SplitView> {
             width: GalleryContainer.width,
             top: 0,
             bottom: 0,
-            child: GalleryContainer(),
+            child: GalleryContainer(
+              onPageSelected: _toggleMenu,
+            ),
           ),
           AnimatedPositioned(
             duration: duration,
             curve: curve,
             left: _showMenu ? GalleryContainer.width : 0,
-            top: 0,
+            bottom: 0,
             child: SafeArea(
               child: GalleryToggleButton(
                 isShowing: _showMenu,
@@ -99,8 +101,8 @@ class GalleryToggleButton extends StatelessWidget {
 }
 
 class GalleryContainer extends StatelessWidget {
-  const GalleryContainer({Key? key}) : super(key: key);
-
+  const GalleryContainer({Key? key, this.onPageSelected}) : super(key: key);
+  final VoidCallback? onPageSelected;
   static const width = 240.0;
 
   @override
@@ -112,7 +114,9 @@ class GalleryContainer extends StatelessWidget {
           right: BorderSide(width: 0.5, color: Colors.black12),
         ),
       ),
-      child: GalleryPageSelector(),
+      child: GalleryMenu(
+        onSelected: (_) => onPageSelected?.call(),
+      ),
     );
   }
 }

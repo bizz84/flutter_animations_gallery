@@ -22,41 +22,34 @@ final selectedPageBuilderProvider = Provider<WidgetBuilder>((ref) {
   return availablePages[selectedPageKey]!;
 });
 
-class GalleryPageSelector extends StatelessWidget {
-  GalleryPageSelector({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return PageScaffold(
-      title: 'Gallery',
-      body: GalleryPagesList(),
-    );
-  }
-}
-
-class GalleryPagesList extends ConsumerWidget {
-  const GalleryPagesList({Key? key}) : super(key: key);
+class GalleryMenu extends ConsumerWidget {
+  GalleryMenu({Key? key, this.onSelected}) : super(key: key);
+  final ValueChanged<String>? onSelected;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedPage = ref.watch(selectedPageKeyProvider);
     final selectedPageName = selectedPage.state;
-    return ListView(
-      children: <Widget>[
-        for (var pageName in availablePages.keys)
-          ListTile(
-            leading: Opacity(
-              opacity: selectedPageName == pageName ? 1.0 : 0.0,
-              child: Icon(Icons.check),
-            ),
-            title: Text(pageName),
-            onTap: () {
-              if (ref.read(selectedPageKeyProvider).state != pageName) {
-                ref.read(selectedPageKeyProvider).state = pageName;
-              }
-            },
-          )
-      ],
+    return PageScaffold(
+      title: 'Gallery',
+      body: ListView(
+        children: <Widget>[
+          for (var pageName in availablePages.keys)
+            ListTile(
+              leading: Opacity(
+                opacity: selectedPageName == pageName ? 1.0 : 0.0,
+                child: Icon(Icons.check),
+              ),
+              title: Text(pageName),
+              onTap: () {
+                if (ref.read(selectedPageKeyProvider).state != pageName) {
+                  ref.read(selectedPageKeyProvider).state = pageName;
+                  onSelected?.call(pageName);
+                }
+              },
+            )
+        ],
+      ),
     );
   }
 }
