@@ -31,33 +31,30 @@ class _StopwatchPageState extends State<StopwatchPage> {
     return PageScaffold(
       title: 'Stopwatch with Ticker',
       body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // ticker dependent UI
-            StopwatchTickerUI(
-              key: _tickerUIKey,
-            ),
-            SizedBox(height: 32),
-            Row(
-              children: [
-                Spacer(),
-                // reset button
-                StopwatchButton(
-                  onPressed: _reset,
-                  title: 'Reset',
-                ),
-                SizedBox(width: 16.0),
-                // start/stop button
-                StopwatchButton(
-                  onPressed: _toggleRunning,
-                  title: _isRunning ? 'Stop' : 'Start',
-                ),
-                Spacer(),
-              ],
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // ticker dependent UI
+              StopwatchTickerUI(
+                key: _tickerUIKey,
+              ),
+              SizedBox(height: 32),
+              // start/stop button
+              StopwatchButton(
+                onPressed: _toggleRunning,
+                title: _isRunning ? 'Stop' : 'Start',
+              ),
+              SizedBox(height: 32),
+              // reset button
+              StopwatchButton(
+                onPressed: _reset,
+                title: 'Reset',
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -72,18 +69,15 @@ class StopwatchButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 120.0,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text(title,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline5!
-                  .copyWith(color: Colors.white)),
-        ),
+    return ElevatedButton(
+      onPressed: onPressed,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Text(title,
+            style: Theme.of(context)
+                .textTheme
+                .headline5!
+                .copyWith(color: Colors.white)),
       ),
     );
   }
