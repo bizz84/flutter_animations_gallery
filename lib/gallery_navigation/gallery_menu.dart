@@ -44,6 +44,16 @@ final selectedPageBuilderProvider = Provider<WidgetBuilder>((ref) {
 class GalleryMenu extends ConsumerWidget {
   GalleryMenu({Key? key}) : super(key: key);
 
+  void _selectPage(BuildContext context, WidgetRef ref, String pageName) {
+    if (ref.read(selectedPageKeyProvider).state != pageName) {
+      ref.read(selectedPageKeyProvider).state = pageName;
+      // dismiss drawer if we have one
+      if (Scaffold.maybeOf(context)?.hasDrawer ?? false) {
+        Navigator.of(context).pop();
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedPage = ref.watch(selectedPageKeyProvider);
@@ -58,24 +68,28 @@ class GalleryMenu extends ConsumerWidget {
             PageListTile(
               selectedPageName: selectedPageName,
               pageName: pageName,
+              onPressed: () => _selectPage(context, ref, pageName),
             ),
           ListSectionHeader(title: 'Implicit Animations'),
           for (var pageName in implicitGroupKeys)
             PageListTile(
               selectedPageName: selectedPageName,
               pageName: pageName,
+              onPressed: () => _selectPage(context, ref, pageName),
             ),
           ListSectionHeader(title: 'Explicit Animations'),
           for (var pageName in explicitGroupKeys)
             PageListTile(
               selectedPageName: selectedPageName,
               pageName: pageName,
+              onPressed: () => _selectPage(context, ref, pageName),
             ),
           ListSectionHeader(title: 'Tickers'),
           for (var pageName in tickerGroupKeys)
             PageListTile(
               selectedPageName: selectedPageName,
               pageName: pageName,
+              onPressed: () => _selectPage(context, ref, pageName),
             ),
         ],
       ),
@@ -83,29 +97,25 @@ class GalleryMenu extends ConsumerWidget {
   }
 }
 
-class PageListTile extends ConsumerWidget {
+class PageListTile extends StatelessWidget {
   const PageListTile(
-      {Key? key, required this.selectedPageName, required this.pageName})
+      {Key? key,
+      required this.selectedPageName,
+      required this.pageName,
+      this.onPressed})
       : super(key: key);
   final String selectedPageName;
   final String pageName;
+  final VoidCallback? onPressed;
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return ListTile(
       leading: Opacity(
         opacity: selectedPageName == pageName ? 1.0 : 0.0,
         child: Icon(Icons.check),
       ),
       title: Text(pageName),
-      onTap: () {
-        if (ref.read(selectedPageKeyProvider).state != pageName) {
-          ref.read(selectedPageKeyProvider).state = pageName;
-          // dismiss drawer if we have one
-          if (Scaffold.maybeOf(context)?.hasDrawer ?? false) {
-            Navigator.of(context).pop();
-          }
-        }
-      },
+      onTap: onPressed,
     );
   }
 }
