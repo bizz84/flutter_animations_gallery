@@ -83,11 +83,14 @@ class _StaggeredAnimationsPageState
               ),
               ElevatedButton(
                 onPressed: _toggleAnimation,
-                child: Text(_isShowing ? 'Hide' : 'Show',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline5!
-                        .copyWith(color: Colors.white)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(_isShowing ? 'Hide' : 'Show',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline5!
+                          .copyWith(color: Colors.white)),
+                ),
               ),
               SizedBox(height: 16),
               for (var title in titles)

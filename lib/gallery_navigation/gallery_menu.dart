@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
 import 'package:flutter_animations_gallery/samples/animated_positioned.dart';
 import 'package:flutter_animations_gallery/samples/curves.dart';
-import 'package:flutter_animations_gallery/samples/scattered_animations.dart';
+import 'package:flutter_animations_gallery/samples/staggered_animations.dart';
 import 'package:flutter_animations_gallery/samples/theming.dart';
 import 'package:flutter_animations_gallery/samples/tickers_stopwatch.dart';
 import 'package:flutter_animations_gallery/samples/tween_animation_builder.dart';
