@@ -34,6 +34,7 @@ class SplitViewState extends State<SplitView> {
             width: widget.menuWidth,
             child: widget.menuBuilder(context),
           ),
+          Container(width: 0.5, color: Colors.black),
           Expanded(child: widget.contentBuilder(context)),
         ],
       );
