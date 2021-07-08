@@ -20,8 +20,8 @@ class PageScaffold extends StatelessWidget {
         leading: showDrawerIcon
             ? IconButton(
                 icon: Icon(Icons.menu),
-                // the parent Scaffold has a drawer, not the one on this widget
-                onPressed: () => Scaffold.of(context).openDrawer(),
+                // if the parent Scaffold (not the one just above) has a drawer, open it
+                onPressed: () => Scaffold.maybeOf(context)?.openDrawer(),
               )
             : null,
         title: Text(title),

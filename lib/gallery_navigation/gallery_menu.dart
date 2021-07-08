@@ -44,8 +44,8 @@ class GalleryMenu extends ConsumerWidget {
               onTap: () {
                 if (ref.read(selectedPageKeyProvider).state != pageName) {
                   ref.read(selectedPageKeyProvider).state = pageName;
-                  // dismiss drawer
-                  if (Scaffold.of(context).hasDrawer) {
+                  // dismiss drawer if we have one
+                  if (Scaffold.maybeOf(context)?.hasDrawer ?? false) {
                     Navigator.of(context).pop();
                   }
                 }
