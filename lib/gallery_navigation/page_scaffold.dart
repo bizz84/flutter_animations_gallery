@@ -15,9 +15,10 @@ class PageScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final hasParentDrawer = Scaffold.maybeOf(context)?.hasDrawer ?? false;
     return Scaffold(
       appBar: AppBar(
-        leading: showDrawerIcon
+        leading: showDrawerIcon && hasParentDrawer
             ? IconButton(
                 icon: Icon(Icons.menu),
                 // if the parent Scaffold (not the one just above) has a drawer, open it
