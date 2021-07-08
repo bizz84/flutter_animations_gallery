@@ -12,7 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final availablePages = <String, WidgetBuilder>{
   'Curves': (_) => CurvesPage(),
-  'Theming': (_) => ThemeSelectionPage(),
+  'Themes': (_) => ThemeSelectionPage(),
   'AnimatedPositioned': (_) => AnimatedPositionedPage(),
   'TweenAnimationBuilder (rotation)': (_) => TweenAnimationBuilderPage(),
   'AnimationController (rotation)': (_) => AnimationControllerRotationPage(),
@@ -21,7 +21,7 @@ final availablePages = <String, WidgetBuilder>{
   'Duration': (_) => DurationPage(),
 };
 
-final settingsGroupKeys = <String>['Curves', 'Theming', 'Duration'];
+final settingsGroupKeys = <String>['Curves', 'Themes', 'Duration'];
 final implicitGroupKeys = <String>[
   'AnimatedPositioned',
   'TweenAnimationBuilder (rotation)'
