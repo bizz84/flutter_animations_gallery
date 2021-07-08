@@ -58,6 +58,10 @@ final curveProvider = Provider<Curve>((ref) {
   return _allCurves[curveKey]!;
 });
 
+final animateAllCurvesProvider = StateProvider<bool>((ref) {
+  return false;
+});
+
 class CurvesPage extends StatefulWidget {
   const CurvesPage({Key? key}) : super(key: key);
 
@@ -68,7 +72,6 @@ class CurvesPage extends StatefulWidget {
 
 class _CurvesPageState extends AnimationControllerState<CurvesPage> {
   _CurvesPageState(Duration duration) : super(duration);
-  bool _animateAllCurves = false;
 
   @override
   void initState() {
@@ -78,23 +81,27 @@ class _CurvesPageState extends AnimationControllerState<CurvesPage> {
 
   @override
   Widget build(BuildContext context) {
-    return PageScaffold(
-      title: 'Curves',
-      actions: [
-        IconButton(
+    return Consumer(builder: (context, ref, _) {
+      final animateAllCurves = ref.watch(animateAllCurvesProvider).state;
+      return PageScaffold(
+        title: 'Curves',
+        actions: [
+          IconButton(
             // TODO: Improve icons
             icon: Transform.rotate(
-              angle: _animateAllCurves ? pi / 2 : 0,
-              child: Icon(_animateAllCurves ? Icons.bar_chart : Icons.repeat),
+              angle: animateAllCurves ? pi / 2 : 0,
+              child: Icon(animateAllCurves ? Icons.bar_chart : Icons.repeat),
             ),
             onPressed: () =>
-                setState(() => _animateAllCurves = !_animateAllCurves)),
-      ],
-      body: CurvesListView(
-        animation: animationController,
-        animateAllCurves: _animateAllCurves,
-      ),
-    );
+                ref.read(animateAllCurvesProvider).state = !animateAllCurves,
+          ),
+        ],
+        body: CurvesListView(
+          animation: animationController,
+          animateAllCurves: animateAllCurves,
+        ),
+      );
+    });
   }
 }
 
@@ -137,6 +144,7 @@ class CurvesListView extends ConsumerWidget {
               title: curveKey,
               showAnimation:
                   animateAllCurves || curveKey == selectedCurveKey.state,
+              isSelected: curveKey == selectedCurveKey.state,
               animation: animation,
               onSelected: () => ref.read(curveKeyProvider).state = curveKey,
             );
@@ -157,6 +165,7 @@ class CurveListTile extends StatelessWidget {
     required this.curve,
     required this.title,
     required this.showAnimation,
+    required this.isSelected,
     required Animation<double> animation,
     this.onSelected,
   })  : curvedAnimation = tween.animate(CurvedAnimation(
@@ -167,6 +176,7 @@ class CurveListTile extends StatelessWidget {
   final Curve curve;
   final String title;
   final bool showAnimation;
+  final bool isSelected;
   final Animation<double> curvedAnimation;
   final VoidCallback? onSelected;
 
@@ -176,6 +186,8 @@ class CurveListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color:
+          isSelected ? Theme.of(context).primaryColorLight : Colors.transparent,
       height: height,
       child: Stack(children: [
         // only apply animation to selected item
