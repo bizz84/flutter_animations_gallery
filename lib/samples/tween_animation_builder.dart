@@ -61,6 +61,7 @@ class _TweenAnimationBuilderPageState extends State<TweenAnimationBuilderPage> {
               },
             ),
             SizedBox(height: size / 4),
+            // use a Row to ensure the Slider has a fixed width, but the parent Column is full-width
             Row(children: [
               Spacer(),
               SizedBox(
@@ -72,13 +73,6 @@ class _TweenAnimationBuilderPageState extends State<TweenAnimationBuilderPage> {
               ),
               Spacer(),
             ]),
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            //   child: Slider.adaptive(
-            //     value: _value,
-            //     onChanged: (value) => setState(() => _value = value),
-            //   ),
-            // ),
             SizedBox(height: size / 4),
           ],
         ),

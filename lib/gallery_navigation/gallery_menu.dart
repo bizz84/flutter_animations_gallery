@@ -4,6 +4,7 @@ import 'package:flutter_animations_gallery/samples/animated_positioned.dart';
 import 'package:flutter_animations_gallery/samples/curves.dart';
 import 'package:flutter_animations_gallery/samples/scattered_animations.dart';
 import 'package:flutter_animations_gallery/samples/theming.dart';
+import 'package:flutter_animations_gallery/samples/tickers_stopwatch.dart';
 import 'package:flutter_animations_gallery/samples/tween_animation_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,6 +13,7 @@ final availablePages = <String, WidgetBuilder>{
   'Theming': (_) => ThemeSelectionPage(),
   'AnimatedPositioned': (_) => AnimatedPositionedPage(),
   'TweenAnimationBuilder': (_) => TweenAnimationBuilderPage(),
+  'Stopwatch with Ticker': (_) => StopwatchPage(),
   'Staggered Animations': (_) => StaggeredAnimationsPage(),
 };
 
