@@ -2,8 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
+import 'package:flutter_animations_gallery/samples/duration.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TweenAnimationBuilderPage extends StatefulWidget {
+class TweenAnimationBuilderPage extends ConsumerStatefulWidget {
   const TweenAnimationBuilderPage({Key? key}) : super(key: key);
 
   @override
@@ -11,13 +13,15 @@ class TweenAnimationBuilderPage extends StatefulWidget {
       _TweenAnimationBuilderPageState();
 }
 
-class _TweenAnimationBuilderPageState extends State<TweenAnimationBuilderPage> {
+class _TweenAnimationBuilderPageState
+    extends ConsumerState<TweenAnimationBuilderPage> {
   double _value = 0.0;
 
   static const size = 120.0;
 
   @override
   Widget build(BuildContext context) {
+    final duration = ref.watch(durationProvider);
     return PageScaffold(
       title: 'TweenAnimationBuilder',
       body: SingleChildScrollView(
@@ -47,7 +51,7 @@ class _TweenAnimationBuilderPageState extends State<TweenAnimationBuilderPage> {
             ),
             SizedBox(height: size / 4),
             TweenAnimationBuilder<double>(
-              duration: Duration(milliseconds: 250),
+              duration: duration,
               tween: Tween(begin: 0.0, end: _value),
               builder: (context, value, child) {
                 return Transform.rotate(

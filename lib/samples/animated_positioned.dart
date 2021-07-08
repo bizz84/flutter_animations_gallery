@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
 import 'package:flutter_animations_gallery/samples/curves.dart';
+import 'package:flutter_animations_gallery/samples/duration.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AnimatedPositionedPage extends ConsumerStatefulWidget {
@@ -27,6 +28,7 @@ class _AnimatedPositionedPageState
   @override
   Widget build(BuildContext context) {
     final curve = ref.watch(curveProvider);
+    final duration = ref.watch(durationProvider);
     return PageScaffold(
       title: 'AnimatedPositioned',
       body: Stack(
@@ -41,7 +43,7 @@ class _AnimatedPositionedPageState
           AnimatedPositioned(
             left: _playerAlignment.dx - 50,
             top: _playerAlignment.dy - 50,
-            duration: Duration(milliseconds: 250),
+            duration: duration,
             curve: curve,
             child: Container(
               width: 100,
