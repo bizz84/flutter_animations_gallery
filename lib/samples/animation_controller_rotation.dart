@@ -36,7 +36,12 @@ class _AnimationControllerRotationPageState
           onPressed: _toggleAnimation,
         ),
       ],
-      body: Center(child: RotatingContainer(animation: animationController)),
+      body: Center(
+        child: GestureDetector(
+          onTap: _toggleAnimation,
+          child: RotatingContainer(animation: animationController),
+        ),
+      ),
     );
   }
 }

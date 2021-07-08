@@ -11,7 +11,7 @@ final durationValues = [
 ];
 
 final durationIndexProvider = StateProvider<int>((ref) {
-  return 0;
+  return 1;
 });
 
 final durationProvider = Provider<Duration>((ref) {

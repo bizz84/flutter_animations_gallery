@@ -16,10 +16,21 @@ final availablePages = <String, WidgetBuilder>{
   'AnimatedPositioned': (_) => AnimatedPositionedPage(),
   'TweenAnimationBuilder (rotation)': (_) => TweenAnimationBuilderPage(),
   'AnimationController (rotation)': (_) => AnimationControllerRotationPage(),
-  'Stopwatch with Ticker': (_) => StopwatchPage(),
+  'Stopwatch': (_) => StopwatchPage(),
   'Staggered Animations': (_) => StaggeredAnimationsPage(),
   'Duration': (_) => DurationPage(),
 };
+
+final settingsGroupKeys = <String>['Curves', 'Theming', 'Duration'];
+final implicitGroupKeys = <String>[
+  'AnimatedPositioned',
+  'TweenAnimationBuilder (rotation)'
+];
+final explicitGroupKeys = <String>[
+  'AnimationController (rotation)',
+  'Staggered Animations'
+];
+final tickerGroupKeys = <String>['Stopwatch'];
 
 final selectedPageKeyProvider = StateProvider<String>((ref) {
   return availablePages.keys.first;
@@ -42,24 +53,80 @@ class GalleryMenu extends ConsumerWidget {
       showDrawerIcon: false,
       body: ListView(
         children: <Widget>[
-          for (var pageName in availablePages.keys)
-            ListTile(
-              leading: Opacity(
-                opacity: selectedPageName == pageName ? 1.0 : 0.0,
-                child: Icon(Icons.check),
-              ),
-              title: Text(pageName),
-              onTap: () {
-                if (ref.read(selectedPageKeyProvider).state != pageName) {
-                  ref.read(selectedPageKeyProvider).state = pageName;
-                  // dismiss drawer if we have one
-                  if (Scaffold.maybeOf(context)?.hasDrawer ?? false) {
-                    Navigator.of(context).pop();
-                  }
-                }
-              },
-            )
+          ListSectionHeader(title: 'Settings'),
+          for (var pageName in settingsGroupKeys)
+            PageListTile(
+              selectedPageName: selectedPageName,
+              pageName: pageName,
+            ),
+          ListSectionHeader(title: 'Implicit Animations'),
+          for (var pageName in implicitGroupKeys)
+            PageListTile(
+              selectedPageName: selectedPageName,
+              pageName: pageName,
+            ),
+          ListSectionHeader(title: 'Explicit Animations'),
+          for (var pageName in explicitGroupKeys)
+            PageListTile(
+              selectedPageName: selectedPageName,
+              pageName: pageName,
+            ),
+          ListSectionHeader(title: 'Tickers'),
+          for (var pageName in tickerGroupKeys)
+            PageListTile(
+              selectedPageName: selectedPageName,
+              pageName: pageName,
+            ),
         ],
+      ),
+    );
+  }
+}
+
+class PageListTile extends ConsumerWidget {
+  const PageListTile(
+      {Key? key, required this.selectedPageName, required this.pageName})
+      : super(key: key);
+  final String selectedPageName;
+  final String pageName;
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return ListTile(
+      leading: Opacity(
+        opacity: selectedPageName == pageName ? 1.0 : 0.0,
+        child: Icon(Icons.check),
+      ),
+      title: Text(pageName),
+      onTap: () {
+        if (ref.read(selectedPageKeyProvider).state != pageName) {
+          ref.read(selectedPageKeyProvider).state = pageName;
+          // dismiss drawer if we have one
+          if (Scaffold.maybeOf(context)?.hasDrawer ?? false) {
+            Navigator.of(context).pop();
+          }
+        }
+      },
+    );
+  }
+}
+
+class ListSectionHeader extends StatelessWidget {
+  const ListSectionHeader({Key? key, required this.title}) : super(key: key);
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      //height: 32,
+      decoration: BoxDecoration(
+        color: Colors.black12,
+        border: Border(
+          top: BorderSide(color: Colors.black26, width: 0.5),
+          bottom: BorderSide(color: Colors.black26, width: 0.5),
+        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Text(title, textAlign: TextAlign.left),
       ),
     );
   }
