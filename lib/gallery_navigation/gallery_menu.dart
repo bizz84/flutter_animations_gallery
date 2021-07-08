@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
 import 'package:flutter_animations_gallery/samples/animated_positioned.dart';
+import 'package:flutter_animations_gallery/samples/animation_controller_rotation.dart';
 import 'package:flutter_animations_gallery/samples/curves.dart';
 import 'package:flutter_animations_gallery/samples/staggered_animations.dart';
 import 'package:flutter_animations_gallery/samples/theming.dart';
@@ -12,7 +13,8 @@ final availablePages = <String, WidgetBuilder>{
   'Curves': (_) => CurvesPage(),
   'Theming': (_) => ThemeSelectionPage(),
   'AnimatedPositioned': (_) => AnimatedPositionedPage(),
-  'TweenAnimationBuilder': (_) => TweenAnimationBuilderPage(),
+  'TweenAnimationBuilder (rotation)': (_) => TweenAnimationBuilderPage(),
+  'AnimationController (rotation)': (_) => AnimationControllerRotationPage(),
   'Stopwatch with Ticker': (_) => StopwatchPage(),
   'Staggered Animations': (_) => StaggeredAnimationsPage(),
 };

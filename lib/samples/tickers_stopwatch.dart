@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animations_gallery/custom_button.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
 
 class StopwatchPage extends StatefulWidget {
@@ -43,41 +44,19 @@ class _StopwatchPageState extends State<StopwatchPage> {
               ),
               SizedBox(height: 32),
               // start/stop button
-              StopwatchButton(
+              CustomButton(
                 onPressed: _toggleRunning,
                 title: _isRunning ? 'Stop' : 'Start',
               ),
               SizedBox(height: 32),
               // reset button
-              StopwatchButton(
+              CustomButton(
                 onPressed: _reset,
                 title: 'Reset',
               ),
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class StopwatchButton extends StatelessWidget {
-  const StopwatchButton({Key? key, required this.title, this.onPressed})
-      : super(key: key);
-  final String title;
-  final VoidCallback? onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Text(title,
-            style: Theme.of(context)
-                .textTheme
-                .headline5!
-                .copyWith(color: Colors.white)),
       ),
     );
   }
