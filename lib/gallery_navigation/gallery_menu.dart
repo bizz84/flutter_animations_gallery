@@ -23,8 +23,7 @@ final selectedPageBuilderProvider = Provider<WidgetBuilder>((ref) {
 });
 
 class GalleryMenu extends ConsumerWidget {
-  GalleryMenu({Key? key, this.onPageSelected}) : super(key: key);
-  final VoidCallback? onPageSelected;
+  GalleryMenu({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -32,6 +31,7 @@ class GalleryMenu extends ConsumerWidget {
     final selectedPageName = selectedPage.state;
     return PageScaffold(
       title: 'Gallery',
+      showDrawerIcon: false,
       body: ListView(
         children: <Widget>[
           for (var pageName in availablePages.keys)
@@ -44,7 +44,10 @@ class GalleryMenu extends ConsumerWidget {
               onTap: () {
                 if (ref.read(selectedPageKeyProvider).state != pageName) {
                   ref.read(selectedPageKeyProvider).state = pageName;
-                  onPageSelected?.call();
+                  // dismiss drawer
+                  if (Scaffold.of(context).hasDrawer) {
+                    Navigator.of(context).pop();
+                  }
                 }
               },
             )

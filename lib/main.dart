@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animations_gallery/gallery_navigation/gallery_container.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/gallery_menu.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/split_view.dart';
 import 'package:flutter_animations_gallery/samples/theming.dart';
@@ -26,9 +25,7 @@ class MyApp extends ConsumerWidget {
       home: Builder(
         builder: (context) => SplitView(
           key: _splitViewKey,
-          menuBuilder: (context) => GalleryContainer(
-            onPageSelected: () => _splitViewKey.currentState?.toggleMenu(),
-          ),
+          menuBuilder: (context) => GalleryMenu(),
           contentBuilder: (context) => selectedPageBuilder(context),
         ),
       ),
