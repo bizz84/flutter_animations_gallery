@@ -90,28 +90,63 @@ class _CurvesPageState extends AnimationControllerState<CurvesPage> {
             onPressed: () =>
                 setState(() => _animateAllCurves = !_animateAllCurves)),
       ],
-      body: ListView.separated(
-        itemCount: _allCurves.keys.length,
-        itemBuilder: (context, index) {
-          return Consumer(builder: (context, ref, _) {
+      body: CurvesListView(
+        animation: animationController,
+        animateAllCurves: _animateAllCurves,
+      ),
+    );
+  }
+}
+
+class CurvesListView extends ConsumerWidget {
+  const CurvesListView(
+      {Key? key, required this.animation, required this.animateAllCurves})
+      : super(key: key);
+  final Animation<double> animation;
+  final bool animateAllCurves;
+
+  static const separatorHeight = 0.5;
+  double scrollOffset(int selectedCurveIndex, double availableHeight) {
+    final listTileHeight = CurveListTile.height + separatorHeight;
+    final selectedOffset = listTileHeight * selectedCurveIndex;
+    final listExtent = listTileHeight * _allCurves.keys.length;
+    final maxOffset = listExtent - availableHeight;
+    final centeredOffset = (availableHeight - listTileHeight) / 2;
+    return max(min(maxOffset, selectedOffset - centeredOffset), 0.0);
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // calculate scroll offset so that the selected curve is vertically centered when the page is first loaded
+        final selectedCurveKey = ref.watch(curveKeyProvider);
+        final selectedCurveIndex =
+            _allCurves.keys.toList().indexOf(selectedCurveKey.state);
+        final availableHeight = constraints.maxHeight;
+        final initialScrollOffset =
+            scrollOffset(selectedCurveIndex, availableHeight);
+        return ListView.separated(
+          controller:
+              ScrollController(initialScrollOffset: initialScrollOffset),
+          itemCount: _allCurves.keys.length,
+          itemBuilder: (context, index) {
             final curveKey = _allCurves.keys.toList()[index];
-            final selectedCurveKey = ref.watch(curveKeyProvider);
             return CurveListTile(
               curve: _allCurves[curveKey]!,
               title: curveKey,
               showAnimation:
-                  _animateAllCurves || curveKey == selectedCurveKey.state,
-              animation: animationController,
-              onSelected: () => ref.read(curveKeyProvider).state =
-                  curveKey, // setState(() => _selectedIndex = index),
+                  animateAllCurves || curveKey == selectedCurveKey.state,
+              animation: animation,
+              onSelected: () => ref.read(curveKeyProvider).state = curveKey,
             );
-          });
-        },
-        separatorBuilder: (context, index) => Container(
-          color: Colors.black12,
-          height: 0.5,
-        ),
-      ),
+          },
+          separatorBuilder: (context, index) => Container(
+            color: Colors.black12,
+            height: separatorHeight,
+          ),
+        );
+      },
     );
   }
 }
@@ -136,11 +171,12 @@ class CurveListTile extends StatelessWidget {
   final VoidCallback? onSelected;
 
   static final tween = Tween(begin: 0.0, end: 1.0);
+  static const height = 60.0;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: height,
       child: Stack(children: [
         // only apply animation to selected item
         if (showAnimation)
