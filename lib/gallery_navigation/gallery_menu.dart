@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
-import 'package:flutter_animations_gallery/samples/animated_positioned.dart';
-import 'package:flutter_animations_gallery/samples/ring_animation.dart';
-import 'package:flutter_animations_gallery/samples/rotation_transition.dart';
-import 'package:flutter_animations_gallery/samples/curves.dart';
-import 'package:flutter_animations_gallery/samples/duration.dart';
-import 'package:flutter_animations_gallery/samples/scale_transition.dart';
-import 'package:flutter_animations_gallery/samples/staggered_animations.dart';
-import 'package:flutter_animations_gallery/samples/theming.dart';
-import 'package:flutter_animations_gallery/samples/tickers_stopwatch.dart';
-import 'package:flutter_animations_gallery/samples/tween_animation_builder.dart';
+import 'package:flutter_animations_gallery/samples/implicit/animated_positioned.dart';
+import 'package:flutter_animations_gallery/samples/explicit/ring_animation.dart';
+import 'package:flutter_animations_gallery/samples/explicit/rotation_transition.dart';
+import 'package:flutter_animations_gallery/samples/settings/curves.dart';
+import 'package:flutter_animations_gallery/samples/settings/duration.dart';
+import 'package:flutter_animations_gallery/samples/explicit/scale_transition.dart';
+import 'package:flutter_animations_gallery/samples/explicit/staggered_animations.dart';
+import 'package:flutter_animations_gallery/samples/settings/theming.dart';
+import 'package:flutter_animations_gallery/samples/tickers/tickers_stopwatch.dart';
+import 'package:flutter_animations_gallery/samples/implicit/tween_animation_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final availablePages = <String, WidgetBuilder>{
