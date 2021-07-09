@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
 import 'package:flutter_animations_gallery/samples/animated_positioned.dart';
-import 'package:flutter_animations_gallery/samples/animation_controller_rotation.dart';
+import 'package:flutter_animations_gallery/samples/ring_animation.dart';
+import 'package:flutter_animations_gallery/samples/rotation_transition.dart';
 import 'package:flutter_animations_gallery/samples/curves.dart';
 import 'package:flutter_animations_gallery/samples/duration.dart';
 import 'package:flutter_animations_gallery/samples/staggered_animations.dart';
@@ -15,9 +16,10 @@ final availablePages = <String, WidgetBuilder>{
   'Themes': (_) => ThemeSelectionPage(),
   'AnimatedPositioned': (_) => AnimatedPositionedPage(),
   'TweenAnimationBuilder (rotation)': (_) => TweenAnimationBuilderPage(),
-  'AnimationController (rotation)': (_) => AnimationControllerRotationPage(),
+  'RotationTransition': (_) => RotationTransitionPage(),
   'Stopwatch': (_) => StopwatchPage(),
   'Staggered Animations': (_) => StaggeredAnimationsPage(),
+  'Animated Ring': (_) => AnimatedRingPage(),
   'Duration': (_) => DurationPage(),
 };
 
@@ -27,8 +29,9 @@ final implicitGroupKeys = <String>[
   'TweenAnimationBuilder (rotation)'
 ];
 final explicitGroupKeys = <String>[
-  'AnimationController (rotation)',
-  'Staggered Animations'
+  'RotationTransition',
+  'Staggered Animations',
+  'Animated Ring'
 ];
 final tickerGroupKeys = <String>['Stopwatch'];
 
