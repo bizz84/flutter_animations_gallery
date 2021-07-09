@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/animation_controller_state.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
@@ -16,6 +14,12 @@ class _RotationTransitionPageState
     extends AnimationControllerState<RotationTransitionPage> {
   _RotationTransitionPageState(Duration duration) : super(duration);
   bool _isAnimating = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _toggleAnimation();
+  }
 
   void _toggleAnimation() {
     if (_isAnimating) {
@@ -42,8 +46,8 @@ class _RotationTransitionPageState
           child: RotationTransition(
             turns: animationController,
             child: Container(
-              width: 240,
-              height: 240,
+              width: 180,
+              height: 180,
               color: Theme.of(context).primaryColor,
             ),
           ),
@@ -52,23 +56,3 @@ class _RotationTransitionPageState
     );
   }
 }
-
-// Something that is not scale, rotate, or translate.
-// class RotatingContainer extends AnimatedWidget {
-//   RotatingContainer({Key? key, required Animation<double> animation})
-//       : super(key: key, listenable: animation);
-
-//   Animation<double> get animation => listenable as Animation<double>;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Transform.rotate(
-//       angle: 0.5 * pi * animation.value,
-//       child: Container(
-//         width: 240,
-//         height: 240,
-//         color: Theme.of(context).primaryColor,
-//       ),
-//     );
-//   }
-// }

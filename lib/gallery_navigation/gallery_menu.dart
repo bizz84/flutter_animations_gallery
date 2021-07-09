@@ -5,6 +5,7 @@ import 'package:flutter_animations_gallery/samples/ring_animation.dart';
 import 'package:flutter_animations_gallery/samples/rotation_transition.dart';
 import 'package:flutter_animations_gallery/samples/curves.dart';
 import 'package:flutter_animations_gallery/samples/duration.dart';
+import 'package:flutter_animations_gallery/samples/scale_transition.dart';
 import 'package:flutter_animations_gallery/samples/staggered_animations.dart';
 import 'package:flutter_animations_gallery/samples/theming.dart';
 import 'package:flutter_animations_gallery/samples/tickers_stopwatch.dart';
@@ -12,15 +13,20 @@ import 'package:flutter_animations_gallery/samples/tween_animation_builder.dart'
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final availablePages = <String, WidgetBuilder>{
+  // settings
   'Curves': (_) => CurvesPage(),
   'Themes': (_) => ThemeSelectionPage(),
+  'Duration': (_) => DurationPage(),
+  // implicit animations
   'AnimatedPositioned': (_) => AnimatedPositionedPage(),
   'TweenAnimationBuilder (rotation)': (_) => TweenAnimationBuilderPage(),
+  // explicit animations
+  'ScaleTransition': (_) => ScaleTransitionPage(),
   'RotationTransition': (_) => RotationTransitionPage(),
-  'Stopwatch': (_) => StopwatchPage(),
-  'Staggered Animations': (_) => StaggeredAnimationsPage(),
   'Animated Ring': (_) => AnimatedRingPage(),
-  'Duration': (_) => DurationPage(),
+  'Staggered Animations': (_) => StaggeredAnimationsPage(),
+  // tickers
+  'Stopwatch': (_) => StopwatchPage(),
 };
 
 final settingsGroupKeys = <String>['Curves', 'Themes', 'Duration'];
@@ -29,6 +35,7 @@ final implicitGroupKeys = <String>[
   'TweenAnimationBuilder (rotation)'
 ];
 final explicitGroupKeys = <String>[
+  'ScaleTransition',
   'RotationTransition',
   'Staggered Animations',
   'Animated Ring'
