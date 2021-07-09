@@ -6,7 +6,7 @@ Feel free to use this code as reference for your own projects.
 
 ## Preview
 
-TBC
+![Animations Gallery Preview](/.github/images/animations-gallery-preview.png)
 
 ## Settings
 
@@ -29,7 +29,7 @@ TBC
 
 ## Other Features
 
-- **Adaptive UI**: Drawer navigation on mobile portrait, split view on mobile landscape or bigger form factors
-- **Global application state** with Riverpod (selected curve, theme, duration)
+- [x] **Adaptive UI**: Drawer navigation on mobile portrait, split view on mobile landscape or bigger form factors
+- [x] **Global application state** with Riverpod (selected curve, theme, duration)
 
 ### [License: MIT](LICENSE.md)
