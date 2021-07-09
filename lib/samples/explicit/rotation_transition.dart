@@ -34,12 +34,10 @@ class _RotationTransitionPageState
   Widget build(BuildContext context) {
     return PageScaffold(
       title: 'RotationTransition',
-      actions: [
-        IconButton(
-          icon: Icon(_isAnimating ? Icons.pause : Icons.play_arrow),
-          onPressed: _toggleAnimation,
-        ),
-      ],
+      floatingActionButton: FloatingActionButton(
+        child: Icon(_isAnimating ? Icons.pause : Icons.play_arrow),
+        onPressed: _toggleAnimation,
+      ),
       body: Center(
         child: GestureDetector(
           onTap: _toggleAnimation,

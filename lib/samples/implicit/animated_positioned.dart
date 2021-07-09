@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
-import 'package:flutter_animations_gallery/samples/curves.dart';
-import 'package:flutter_animations_gallery/samples/duration.dart';
+import 'package:flutter_animations_gallery/samples/settings/curves.dart';
+import 'package:flutter_animations_gallery/samples/settings/duration.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AnimatedPositionedPage extends ConsumerStatefulWidget {
@@ -13,7 +13,7 @@ class AnimatedPositionedPage extends ConsumerStatefulWidget {
 
 class _AnimatedPositionedPageState
     extends ConsumerState<AnimatedPositionedPage> {
-  late Offset _playerAlignment = Offset(0, 0);
+  late Offset _playerAlignment = Offset(100, 100);
 
   // This method contains most of the game logic
   void _handleTapDown(TapDownDetails details) {

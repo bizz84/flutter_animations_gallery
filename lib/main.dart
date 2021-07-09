@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/gallery_menu.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/split_view.dart';
-import 'package:flutter_animations_gallery/samples/theming.dart';
+import 'package:flutter_animations_gallery/samples/settings/theming.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {

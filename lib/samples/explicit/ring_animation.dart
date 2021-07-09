@@ -29,7 +29,7 @@ class _AnimatedRingPageState
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      title: 'AnimationController (custom)',
+      title: 'Animated Ring',
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,

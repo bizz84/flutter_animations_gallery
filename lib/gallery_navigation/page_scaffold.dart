@@ -6,11 +6,13 @@ class PageScaffold extends StatelessWidget {
     required this.title,
     this.showDrawerIcon = true,
     this.actions = const [],
+    this.floatingActionButton,
     required this.body,
   }) : super(key: key);
   final String title;
   final bool showDrawerIcon;
   final List<Widget> actions;
+  final Widget? floatingActionButton;
   final Widget body;
 
   @override
@@ -29,6 +31,7 @@ class PageScaffold extends StatelessWidget {
         actions: actions,
       ),
       body: body,
+      floatingActionButton: floatingActionButton,
     );
   }
 }

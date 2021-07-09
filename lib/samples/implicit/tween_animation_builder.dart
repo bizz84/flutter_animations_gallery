@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
-import 'package:flutter_animations_gallery/samples/duration.dart';
+import 'package:flutter_animations_gallery/samples/settings/duration.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TweenAnimationBuilderPage extends ConsumerStatefulWidget {
