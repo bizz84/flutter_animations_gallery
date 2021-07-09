@@ -1,16 +1,35 @@
-# flutter_animations_gallery
+# Flutter Animations Gallery
 
-A new Flutter project.
+This project is a showcase of the most common Flutter animation APIs.
 
-## Getting Started
+Feel free to use this code as reference for your own projects.
 
-This project is a starting point for a Flutter application.
+## Preview
 
-A few resources to get you started if this is your first Flutter project:
+TBC
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Settings
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [x] **Curves**: a showcase of all built-in Flutter animation curves
+- [x] **Themes**: primary color theme selection (red, indigo, green, brown)
+- [x] **Duration**: slider to set the duration of various animations in the app
+
+## Implicit Animations
+
+- [x] **AnimatedContainer**
+- [x] **AnimatedPositioned**
+- [x] **TweenAnimationBuilder** (rotating `Container`)
+
+## Explicit Animations
+
+- [x] **ScaleTransition**
+- [x] **RotationTransition**
+- [x] **Staggered Animations**
+- [x] **Animated Ring** (`AnimationController` + `CustomPainter`)
+
+## Other Features
+
+- **Adaptive UI**: Drawer navigation on mobile portrait, split view on mobile landscape or bigger form factors
+- **Global application state** with Riverpod (selected curve, theme, duration)
+
+### [License: MIT](LICENSE.md)
