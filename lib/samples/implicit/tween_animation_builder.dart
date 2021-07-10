@@ -35,8 +35,8 @@ class _TweenAnimationBuilderPageState
               style: Theme.of(context).textTheme.headline5,
             ),
             SizedBox(height: size / 4),
-            Transform.rotate(
-              angle: 0.5 * pi * _value,
+            Transform.translate(
+              offset: Offset(_value * 200 - 100, 0),
               child: Container(
                 width: size,
                 height: size,
@@ -53,14 +53,16 @@ class _TweenAnimationBuilderPageState
             TweenAnimationBuilder<double>(
               duration: duration,
               tween: Tween(begin: 0.0, end: _value),
+              child: Container(
+                width: size,
+                height: size,
+                color: Theme.of(context).primaryColor,
+              ),
               builder: (context, value, child) {
-                return Transform.rotate(
-                  angle: 0.5 * pi * value,
-                  child: Container(
-                    width: size,
-                    height: size,
-                    color: Theme.of(context).primaryColor,
-                  ),
+                return Transform.translate(
+                  offset: Offset(value * 200 - 100, 0),
+                  //angle: 0.5 * pi * value,
+                  child: child,
                 );
               },
             ),

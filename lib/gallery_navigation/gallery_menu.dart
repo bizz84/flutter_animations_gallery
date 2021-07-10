@@ -21,7 +21,7 @@ final availablePages = <String, WidgetBuilder>{
   // implicit animations
   'AnimatedContainer': (_) => AnimatedContainerPage(),
   'AnimatedPositioned': (_) => AnimatedPositionedPage(),
-  'TweenAnimationBuilder (rotation)': (_) => TweenAnimationBuilderPage(),
+  'TweenAnimationBuilder (translation)': (_) => TweenAnimationBuilderPage(),
   // explicit animations
   'ScaleTransition': (_) => ScaleTransitionPage(),
   'RotationTransition': (_) => RotationTransitionPage(),
@@ -39,7 +39,7 @@ final settingsGroupKeys = <String>[
 final implicitGroupKeys = <String>[
   'AnimatedContainer',
   'AnimatedPositioned',
-  'TweenAnimationBuilder (rotation)',
+  'TweenAnimationBuilder (translation)',
 ];
 final explicitGroupKeys = <String>[
   'ScaleTransition',
