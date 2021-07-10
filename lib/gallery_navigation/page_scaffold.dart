@@ -29,6 +29,7 @@ class PageScaffold extends StatelessWidget {
             : null,
         title: Text(title),
         actions: actions,
+        brightness: Brightness.dark,
       ),
       body: body,
       floatingActionButton: floatingActionButton,
