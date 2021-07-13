@@ -2,11 +2,11 @@
 
 This project is a showcase of the most common Flutter animation APIs.
 
-Feel free to use this code as reference for your own projects.
-
 ## Preview
 
-![Animations Gallery Preview](/.github/images/animations-gallery-preview.png)
+![Animations Gallery Preview](/.github/images/flutter-animations-gallery-preview.gif)
+
+**Also available as a [Flutter web demo](https://flutter-animations-gallery.web.app/#/).**
 
 ## Settings
 
