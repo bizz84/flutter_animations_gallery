@@ -32,6 +32,8 @@ This project is a showcase of the most common Flutter animation APIs.
 - [x] **Adaptive UI**: Drawer navigation on mobile portrait, split view on mobile landscape or bigger form factors
 - [x] **Global application state** with Riverpod (selected curve, theme, duration)
 
+> Note: I may expand this to include more examples in the future. Contributions and PRs are welcome.
+
 ## Want More? Get my Flutter Animations Masterclass
 
 This [full course](https://codewithandrea.com/courses/flutter-animations-masterclass/) will teach you how to build a habit tracking application with **completely custom UI and animations**.
