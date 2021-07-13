@@ -34,7 +34,7 @@ This project is a showcase of the most common Flutter animation APIs.
 
 ## Want More? Get my Flutter Animations Masterclass
 
-This [full course](https://codewithandrea.com/courses/flutter-animations-masterclass/) will teach you how to build a completely custom habit tracking application.
+This [full course](https://codewithandrea.com/courses/flutter-animations-masterclass/) will teach you how to build a habit tracking application with **completely custom UI and animations**.
 
 Included: **7 hours of in-depth content**, full source code, extra challenges & much more.
 
