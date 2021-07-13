@@ -32,4 +32,11 @@ Feel free to use this code as reference for your own projects.
 - [x] **Adaptive UI**: Drawer navigation on mobile portrait, split view on mobile landscape or bigger form factors
 - [x] **Global application state** with Riverpod (selected curve, theme, duration)
 
+## Want More? Get my Flutter Animations Masterclass
+
+This is a [full course](https://codewithandrea.com/courses/flutter-animations-masterclass/) with **7 hours** of in-depth content about animations in Flutter.
+
+[![Animations Gallery Preview](/.github/images/flutter-animations-course-banner.png)](https://codewithandrea.com/courses/flutter-animations-masterclass/)
+
+
 ### [License: MIT](LICENSE.md)
