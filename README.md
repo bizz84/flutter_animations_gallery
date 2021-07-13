@@ -18,7 +18,7 @@ This project is a showcase of the most common Flutter animation APIs.
 
 - [x] **AnimatedContainer**
 - [x] **AnimatedPositioned**
-- [x] **TweenAnimationBuilder** (rotating `Container`)
+- [x] **TweenAnimationBuilder**
 
 ## Explicit Animations
 
@@ -40,5 +40,6 @@ Included: **7 hours of in-depth content**, full source code, extra challenges & 
 
 [![Animations Gallery Preview](/.github/images/flutter-animations-course-banner.png)](https://codewithandrea.com/courses/flutter-animations-masterclass/)
 
+---
 
 ### [License: MIT](LICENSE.md)
