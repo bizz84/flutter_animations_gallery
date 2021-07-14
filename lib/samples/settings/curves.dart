@@ -59,7 +59,7 @@ final curveProvider = Provider<Curve>((ref) {
 });
 
 final animateAllCurvesProvider = StateProvider<bool>((ref) {
-  return false;
+  return true;
 });
 
 class CurvesPage extends StatefulWidget {
