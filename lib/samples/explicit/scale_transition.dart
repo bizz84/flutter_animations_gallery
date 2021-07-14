@@ -17,8 +17,10 @@ class _ScaleTransitionPageState
   late final _scaleAnimation = Tween(
     begin: 0.0,
     end: 1.0,
-  ).animate(
-      CurvedAnimation(parent: animationController, curve: Curves.easeInOut));
+  ).animate(CurvedAnimation(
+    parent: animationController,
+    curve: Curves.easeInOut,
+  ));
 
   @override
   void initState() {
