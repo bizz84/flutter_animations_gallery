@@ -9,7 +9,6 @@ void main() {
 }
 
 class MyApp extends ConsumerWidget {
-  final _splitViewKey = GlobalKey<SplitViewState>();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // watch all application state variables
@@ -24,7 +23,6 @@ class MyApp extends ConsumerWidget {
       ),
       home: Builder(
         builder: (context) => SplitView(
-          key: _splitViewKey,
           menuBuilder: (context) => GalleryMenu(),
           contentBuilder: (context) => selectedPageBuilder(context),
         ),

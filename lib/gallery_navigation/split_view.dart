@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SplitView extends StatefulWidget {
+class SplitView extends StatelessWidget {
   const SplitView({
     Key? key,
     required this.menuBuilder,
@@ -14,36 +14,26 @@ class SplitView extends StatefulWidget {
   final double menuWidth;
 
   @override
-  SplitViewState createState() => SplitViewState();
-}
-
-class SplitViewState extends State<SplitView> {
-  bool _showMenu = false;
-  void toggleMenu() {
-    setState(() => _showMenu = !_showMenu);
-  }
-
-  @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    if (screenWidth >= widget.breakpoint) {
+    if (screenWidth >= breakpoint) {
       // wide screen: menu on the left, content on the right
       return Row(
         children: [
           SizedBox(
-            width: widget.menuWidth,
-            child: widget.menuBuilder(context),
+            width: menuWidth,
+            child: menuBuilder(context),
           ),
           Container(width: 0.5, color: Colors.black),
-          Expanded(child: widget.contentBuilder(context)),
+          Expanded(child: contentBuilder(context)),
         ],
       );
     } else {
       // narrow screen: show content, menu inside drawer
       return Scaffold(
-        body: widget.contentBuilder(context),
+        body: contentBuilder(context),
         drawer: Drawer(
-          child: widget.menuBuilder(context),
+          child: menuBuilder(context),
         ),
       );
     }

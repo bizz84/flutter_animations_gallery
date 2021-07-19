@@ -7,13 +7,13 @@ class PageScaffold extends StatelessWidget {
     this.showDrawerIcon = true,
     this.actions = const [],
     this.floatingActionButton,
-    required this.body,
+    this.body,
   }) : super(key: key);
   final String title;
   final bool showDrawerIcon;
   final List<Widget> actions;
   final Widget? floatingActionButton;
-  final Widget body;
+  final Widget? body;
 
   @override
   Widget build(BuildContext context) {
