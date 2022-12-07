@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
-import 'package:flutter_animations_gallery/samples/implicit/animated_container.dart';
-import 'package:flutter_animations_gallery/samples/implicit/animated_positioned.dart';
 import 'package:flutter_animations_gallery/samples/explicit/ring_animation.dart';
 import 'package:flutter_animations_gallery/samples/explicit/rotation_transition.dart';
-import 'package:flutter_animations_gallery/samples/settings/curves.dart';
-import 'package:flutter_animations_gallery/samples/settings/duration.dart';
 import 'package:flutter_animations_gallery/samples/explicit/scale_transition.dart';
 import 'package:flutter_animations_gallery/samples/explicit/staggered_animations.dart';
+import 'package:flutter_animations_gallery/samples/implicit/animated_container.dart';
+import 'package:flutter_animations_gallery/samples/implicit/animated_positioned.dart';
+import 'package:flutter_animations_gallery/samples/implicit/tween_animation_builder.dart';
+import 'package:flutter_animations_gallery/samples/settings/curves.dart';
+import 'package:flutter_animations_gallery/samples/settings/duration.dart';
 import 'package:flutter_animations_gallery/samples/settings/theming.dart';
 import 'package:flutter_animations_gallery/samples/tickers/tickers_stopwatch.dart';
-import 'package:flutter_animations_gallery/samples/implicit/tween_animation_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final availablePages = <String, WidgetBuilder>{
@@ -56,7 +56,7 @@ final selectedPageKeyProvider = StateProvider<String>((ref) {
 });
 
 final selectedPageBuilderProvider = Provider<WidgetBuilder>((ref) {
-  final selectedPageKey = ref.watch(selectedPageKeyProvider).state;
+  final selectedPageKey = ref.watch(selectedPageKeyProvider);
   return availablePages[selectedPageKey]!;
 });
 
@@ -64,8 +64,8 @@ class GalleryMenu extends ConsumerWidget {
   GalleryMenu({Key? key}) : super(key: key);
 
   void _selectPage(BuildContext context, WidgetRef ref, String pageName) {
-    if (ref.read(selectedPageKeyProvider).state != pageName) {
-      ref.read(selectedPageKeyProvider).state = pageName;
+    if (ref.read(selectedPageKeyProvider) != pageName) {
+      ref.read(selectedPageKeyProvider.notifier).state = pageName;
       // dismiss drawer if we have one
       if (Scaffold.maybeOf(context)?.hasDrawer ?? false) {
         Navigator.of(context).pop();
@@ -76,7 +76,7 @@ class GalleryMenu extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedPage = ref.watch(selectedPageKeyProvider);
-    final selectedPageName = selectedPage.state;
+    final selectedPageName = selectedPage;
     return PageScaffold(
       title: 'Gallery',
       showDrawerIcon: false,
