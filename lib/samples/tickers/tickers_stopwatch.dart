@@ -4,6 +4,8 @@ import 'package:flutter_animations_gallery/custom_button.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
 
 class StopwatchPage extends StatefulWidget {
+  const StopwatchPage({Key? key}) : super(key: key);
+
   @override
   _StopwatchPageState createState() => _StopwatchPageState();
 }
@@ -42,13 +44,13 @@ class _StopwatchPageState extends State<StopwatchPage> {
               StopwatchTickerUI(
                 key: _tickerUIKey,
               ),
-              SizedBox(height: 32),
+              const SizedBox(height: 32),
               // start/stop button
               CustomButton(
                 onPressed: _toggleRunning,
                 title: _isRunning ? 'Stop' : 'Start',
               ),
-              SizedBox(height: 32),
+              const SizedBox(height: 32),
               // reset button
               CustomButton(
                 onPressed: _reset,
@@ -79,7 +81,7 @@ class StopwatchTickerUIState extends State<StopwatchTickerUI>
   @override
   void initState() {
     super.initState();
-    _ticker = this.createTicker((elapsed) {
+    _ticker = createTicker((elapsed) {
       setState(() {
         _currentlyElapsed = elapsed;
       });
@@ -138,10 +140,10 @@ class ElapsedTimeText extends StatelessWidget {
       children: [
         TimeDigit(minutesStr.substring(0, 1), width: digitWidth),
         TimeDigit(minutesStr.substring(1, 2), width: digitWidth),
-        TimeDigit(':', width: 6),
+        const TimeDigit(':', width: 6),
         TimeDigit(secondsStr.substring(0, 1), width: digitWidth),
         TimeDigit(secondsStr.substring(1, 2), width: digitWidth),
-        TimeDigit('.', width: 6),
+        const TimeDigit('.', width: 6),
         TimeDigit(hundredsStr.substring(0, 1), width: digitWidth),
         TimeDigit(hundredsStr.substring(1, 2), width: digitWidth),
       ],
@@ -160,7 +162,7 @@ class TimeDigit extends StatelessWidget {
       width: width,
       child: Text(
         text,
-        style: TextStyle(fontSize: 40),
+        style: const TextStyle(fontSize: 40),
         textAlign: TextAlign.center,
       ),
     );

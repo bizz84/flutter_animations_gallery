@@ -22,14 +22,14 @@ class PageScaffold extends StatelessWidget {
       appBar: AppBar(
         leading: showDrawerIcon && hasParentDrawer
             ? IconButton(
-                icon: Icon(Icons.menu),
+                icon: const Icon(Icons.menu),
                 // if the parent Scaffold (not the one just above) has a drawer, open it
                 onPressed: () => Scaffold.maybeOf(context)?.openDrawer(),
               )
             : null,
         title: Text(title),
         actions: actions,
-        brightness: Brightness.dark,
+        //brightness: Brightness.dark,
       ),
       body: body,
       floatingActionButton: floatingActionButton,

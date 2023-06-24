@@ -7,6 +7,8 @@ import 'package:flutter_animations_gallery/samples/settings/duration.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AnimatedContainerPage extends ConsumerStatefulWidget {
+  const AnimatedContainerPage({Key? key}) : super(key: key);
+
   @override
   _AnimatedContainerPageState createState() => _AnimatedContainerPageState();
 }
@@ -42,7 +44,7 @@ class _AnimatedContainerPageState extends ConsumerState<AnimatedContainerPage> {
     return PageScaffold(
       title: 'AnimatedContainer',
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.play_arrow),
+        child: const Icon(Icons.play_arrow),
         onPressed: _randomize,
       ),
       body: Center(

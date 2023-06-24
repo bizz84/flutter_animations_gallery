@@ -13,7 +13,7 @@ class AnimatedPositionedPage extends ConsumerStatefulWidget {
 
 class _AnimatedPositionedPageState
     extends ConsumerState<AnimatedPositionedPage> {
-  late Offset _playerAlignment = Offset(100, 100);
+  late Offset _playerAlignment = const Offset(100, 100);
 
   // This method contains most of the game logic
   void _handleTapDown(TapDownDetails details) {

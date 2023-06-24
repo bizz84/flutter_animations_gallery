@@ -7,7 +7,7 @@ class ScaleTransitionPage extends StatefulWidget {
 
   @override
   _ScaleTransitionPageState createState() =>
-      _ScaleTransitionPageState(Duration(milliseconds: 1000));
+      _ScaleTransitionPageState(const Duration(milliseconds: 1000));
 }
 
 class _ScaleTransitionPageState

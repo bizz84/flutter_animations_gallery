@@ -60,22 +60,14 @@ class ThemeListTile extends StatelessWidget {
         child: ElevatedButton(
           onPressed: onSelected,
           style: ElevatedButton.styleFrom(
-            primary: color, // background
-            onPrimary: Colors.white, // foreground
+            foregroundColor: Colors.white, backgroundColor: color, // foreground
           ),
           child: Text(colorName,
               style: Theme.of(context)
                   .textTheme
-                  .headline5!
+                  .headlineSmall!
                   .copyWith(color: Colors.white)),
         ),
-      ),
-    );
-    return GestureDetector(
-      onTap: onSelected,
-      child: Container(
-        height: 60,
-        color: color,
       ),
     );
   }

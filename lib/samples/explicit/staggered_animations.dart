@@ -41,7 +41,7 @@ class StaggeredAnimationsPage extends StatefulWidget {
 
   @override
   _StaggeredAnimationsPageState createState() =>
-      _StaggeredAnimationsPageState(Duration(milliseconds: 1500));
+      _StaggeredAnimationsPageState(const Duration(milliseconds: 1500));
 }
 
 class _StaggeredAnimationsPageState
@@ -79,7 +79,7 @@ class _StaggeredAnimationsPageState
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text('How to make pasta',
-                    style: Theme.of(context).textTheme.headline5),
+                    style: Theme.of(context).textTheme.headlineSmall),
               ),
               ElevatedButton(
                 onPressed: _toggleAnimation,
@@ -88,11 +88,11 @@ class _StaggeredAnimationsPageState
                   child: Text(_isShowing ? 'Hide' : 'Show',
                       style: Theme.of(context)
                           .textTheme
-                          .headline5!
+                          .headlineSmall!
                           .copyWith(color: Colors.white)),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               for (var title in titles)
                 StepWidgetTile(
                   animation: animationController,
@@ -106,7 +106,7 @@ class _StaggeredAnimationsPageState
 }
 
 class StepWidgetTile extends StatelessWidget {
-  StepWidgetTile({
+  const StepWidgetTile({
     Key? key,
     required this.animation,
     required this.index,
@@ -120,7 +120,7 @@ class StepWidgetTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 60,
       child: Stack(children: [
         // only apply animation to selected item
@@ -133,7 +133,7 @@ class StepWidgetTile extends StatelessWidget {
             child: Text(title,
                 style: Theme.of(context)
                     .textTheme
-                    .subtitle1!
+                    .titleMedium!
                     .copyWith(color: Colors.white))),
         Container(
           height: 60,

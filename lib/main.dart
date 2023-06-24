@@ -5,10 +5,12 @@ import 'package:flutter_animations_gallery/samples/settings/theming.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(ProviderScope(child: MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends ConsumerWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // watch all application state variables
@@ -23,7 +25,7 @@ class MyApp extends ConsumerWidget {
       ),
       home: Builder(
         builder: (context) => SplitView(
-          menuBuilder: (context) => GalleryMenu(),
+          menuBuilder: (context) => const GalleryMenu(),
           contentBuilder: (context) => selectedPageBuilder(context),
         ),
       ),

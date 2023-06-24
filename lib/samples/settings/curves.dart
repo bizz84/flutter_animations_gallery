@@ -67,7 +67,7 @@ class CurvesPage extends StatefulWidget {
 
   @override
   _CurvesPageState createState() =>
-      _CurvesPageState(Duration(milliseconds: 1500));
+      _CurvesPageState(const Duration(milliseconds: 1500));
 }
 
 class _CurvesPageState extends AnimationControllerState<CurvesPage> {
@@ -114,7 +114,7 @@ class CurvesListView extends ConsumerWidget {
 
   static const separatorHeight = 0.5;
   double scrollOffset(int selectedCurveIndex, double availableHeight) {
-    final listTileHeight = CurveListTile.height + separatorHeight;
+    const listTileHeight = CurveListTile.height + separatorHeight;
     final selectedOffset = listTileHeight * selectedCurveIndex;
     final listExtent = listTileHeight * _allCurves.keys.length;
     final maxOffset = listExtent - availableHeight;
@@ -209,7 +209,7 @@ class CurveListTile extends StatelessWidget {
           child: Text(
             title,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.subtitle1!,
+            style: Theme.of(context).textTheme.titleMedium!,
           ),
         ),
         GestureDetector(

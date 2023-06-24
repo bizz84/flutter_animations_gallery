@@ -30,7 +30,7 @@ class DurationPage extends ConsumerWidget {
       title: 'Duration',
       body: Center(
         child: Row(children: [
-          Spacer(),
+          const Spacer(),
           SizedBox(
             width: 240,
             child: Column(
@@ -39,12 +39,12 @@ class DurationPage extends ConsumerWidget {
                 Text(
                   'Use the slider to choose the duration of the implicit animations in the app:',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.subtitle1,
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
-                SizedBox(height: 32.0),
+                const SizedBox(height: 32.0),
                 Text(
                   '$durationValue ms',
-                  style: Theme.of(context).textTheme.headline5,
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 Slider(
                   min: 0,
@@ -57,7 +57,7 @@ class DurationPage extends ConsumerWidget {
               ],
             ),
           ),
-          Spacer(),
+          const Spacer(),
         ]),
       ),
     );

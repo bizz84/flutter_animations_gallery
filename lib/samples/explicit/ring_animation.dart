@@ -6,9 +6,11 @@ import 'package:flutter_animations_gallery/animation_controller_state.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
 
 class AnimatedRingPage extends StatefulWidget {
+  const AnimatedRingPage({Key? key}) : super(key: key);
+
   @override
   _AnimatedRingPageState createState() =>
-      _AnimatedRingPageState(Duration(milliseconds: 750));
+      _AnimatedRingPageState(const Duration(milliseconds: 750));
 }
 
 class _AnimatedRingPageState
@@ -37,9 +39,9 @@ class _AnimatedRingPageState
             Text(
               'Tap and hold to animate',
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline5,
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
-            SizedBox(height: 32),
+            const SizedBox(height: 32),
             SizedBox(
               width: 240,
               height: 240,
@@ -63,7 +65,7 @@ class _AnimatedRingPageState
 }
 
 class Ring extends StatelessWidget {
-  const Ring({required this.progress});
+  const Ring({Key? key, required this.progress}) : super(key: key);
   final double progress;
   @override
   Widget build(BuildContext context) {

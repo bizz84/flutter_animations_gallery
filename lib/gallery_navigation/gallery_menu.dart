@@ -15,20 +15,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final availablePages = <String, WidgetBuilder>{
   // settings
-  'Curves': (_) => CurvesPage(),
-  'Themes': (_) => ThemeSelectionPage(),
-  'Duration': (_) => DurationPage(),
+  'Curves': (_) => const CurvesPage(),
+  'Themes': (_) => const ThemeSelectionPage(),
+  'Duration': (_) => const DurationPage(),
   // implicit animations
-  'AnimatedContainer': (_) => AnimatedContainerPage(),
-  'AnimatedPositioned': (_) => AnimatedPositionedPage(),
-  'TweenAnimationBuilder (translation)': (_) => TweenAnimationBuilderPage(),
+  'AnimatedContainer': (_) => const AnimatedContainerPage(),
+  'AnimatedPositioned': (_) => const AnimatedPositionedPage(),
+  'TweenAnimationBuilder (translation)': (_) => const TweenAnimationBuilderPage(),
   // explicit animations
-  'ScaleTransition': (_) => ScaleTransitionPage(),
-  'RotationTransition': (_) => RotationTransitionPage(),
-  'Animated Ring': (_) => AnimatedRingPage(),
-  'Staggered Animations': (_) => StaggeredAnimationsPage(),
+  'ScaleTransition': (_) => const ScaleTransitionPage(),
+  'RotationTransition': (_) => const RotationTransitionPage(),
+  'Animated Ring': (_) => const AnimatedRingPage(),
+  'Staggered Animations': (_) => const StaggeredAnimationsPage(),
   // tickers
-  'Stopwatch': (_) => StopwatchPage(),
+  'Stopwatch': (_) => const StopwatchPage(),
 };
 
 final settingsGroupKeys = <String>[
@@ -61,7 +61,7 @@ final selectedPageBuilderProvider = Provider<WidgetBuilder>((ref) {
 });
 
 class GalleryMenu extends ConsumerWidget {
-  GalleryMenu({Key? key}) : super(key: key);
+  const GalleryMenu({Key? key}) : super(key: key);
 
   void _selectPage(BuildContext context, WidgetRef ref, String pageName) {
     if (ref.read(selectedPageKeyProvider).state != pageName) {
@@ -82,28 +82,28 @@ class GalleryMenu extends ConsumerWidget {
       showDrawerIcon: false,
       body: ListView(
         children: <Widget>[
-          ListSectionHeader(title: 'Settings'),
+          const ListSectionHeader(title: 'Settings'),
           for (var pageName in settingsGroupKeys)
             PageListTile(
               selectedPageName: selectedPageName,
               pageName: pageName,
               onPressed: () => _selectPage(context, ref, pageName),
             ),
-          ListSectionHeader(title: 'Implicit Animations'),
+          const ListSectionHeader(title: 'Implicit Animations'),
           for (var pageName in implicitGroupKeys)
             PageListTile(
               selectedPageName: selectedPageName,
               pageName: pageName,
               onPressed: () => _selectPage(context, ref, pageName),
             ),
-          ListSectionHeader(title: 'Explicit Animations'),
+          const ListSectionHeader(title: 'Explicit Animations'),
           for (var pageName in explicitGroupKeys)
             PageListTile(
               selectedPageName: selectedPageName,
               pageName: pageName,
               onPressed: () => _selectPage(context, ref, pageName),
             ),
-          ListSectionHeader(title: 'Tickers'),
+          const ListSectionHeader(title: 'Tickers'),
           for (var pageName in tickerGroupKeys)
             PageListTile(
               selectedPageName: selectedPageName,
@@ -131,7 +131,7 @@ class PageListTile extends StatelessWidget {
     return ListTile(
       leading: Opacity(
         opacity: selectedPageName == pageName ? 1.0 : 0.0,
-        child: Icon(Icons.check),
+        child: const Icon(Icons.check),
       ),
       title: Text(pageName),
       onTap: onPressed,
@@ -146,7 +146,7 @@ class ListSectionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       //height: 32,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.black12,
         border: Border(
           top: BorderSide(color: Colors.black26, width: 0.5),
@@ -154,7 +154,7 @@ class ListSectionHeader extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Text(title, textAlign: TextAlign.left),
       ),
     );

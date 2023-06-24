@@ -7,7 +7,7 @@ class RotationTransitionPage extends StatefulWidget {
 
   @override
   _RotationTransitionPageState createState() =>
-      _RotationTransitionPageState(Duration(milliseconds: 1000));
+      _RotationTransitionPageState(const Duration(milliseconds: 1000));
 }
 
 class _RotationTransitionPageState

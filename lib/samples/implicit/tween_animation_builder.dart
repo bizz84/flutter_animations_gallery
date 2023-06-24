@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
@@ -28,13 +27,13 @@ class _TweenAnimationBuilderPageState
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(height: size / 4),
+            const SizedBox(height: size / 4),
             Text(
               'Without TweenAnimationBuilder',
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline5,
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
-            SizedBox(height: size / 4),
+            const SizedBox(height: size / 4),
             Transform.translate(
               offset: Offset(_value * 200 - 100, 0),
               child: Container(
@@ -43,13 +42,13 @@ class _TweenAnimationBuilderPageState
                 color: Theme.of(context).primaryColor,
               ),
             ),
-            SizedBox(height: size / 4),
+            const SizedBox(height: size / 4),
             Text(
               'With TweenAnimationBuilder',
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline5,
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
-            SizedBox(height: size / 4),
+            const SizedBox(height: size / 4),
             TweenAnimationBuilder<double>(
               duration: duration,
               tween: Tween(begin: 0.0, end: _value),
@@ -66,10 +65,10 @@ class _TweenAnimationBuilderPageState
                 );
               },
             ),
-            SizedBox(height: size / 4),
+            const SizedBox(height: size / 4),
             // use a Row to ensure the Slider has a fixed width, but the parent Column is full-width
             Row(children: [
-              Spacer(),
+              const Spacer(),
               SizedBox(
                 width: 240,
                 child: Slider.adaptive(
@@ -77,9 +76,9 @@ class _TweenAnimationBuilderPageState
                   onChanged: (value) => setState(() => _value = value),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
             ]),
-            SizedBox(height: size / 4),
+            const SizedBox(height: size / 4),
           ],
         ),
       ),
