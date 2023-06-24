@@ -6,7 +6,7 @@ class RotationTransitionPage extends StatefulWidget {
   const RotationTransitionPage({Key? key}) : super(key: key);
 
   @override
-  _RotationTransitionPageState createState() =>
+  State<RotationTransitionPage> createState() =>
       _RotationTransitionPageState(const Duration(milliseconds: 1000));
 }
 
@@ -35,8 +35,8 @@ class _RotationTransitionPageState
     return PageScaffold(
       title: 'RotationTransition',
       floatingActionButton: FloatingActionButton(
-        child: Icon(_isAnimating ? Icons.pause : Icons.play_arrow),
         onPressed: _toggleAnimation,
+        child: Icon(_isAnimating ? Icons.pause : Icons.play_arrow),
       ),
       body: Center(
         child: GestureDetector(

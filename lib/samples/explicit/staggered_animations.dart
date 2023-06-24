@@ -40,7 +40,7 @@ class StaggeredAnimationsPage extends StatefulWidget {
   const StaggeredAnimationsPage({Key? key}) : super(key: key);
 
   @override
-  _StaggeredAnimationsPageState createState() =>
+  State<StaggeredAnimationsPage> createState() =>
       _StaggeredAnimationsPageState(const Duration(milliseconds: 1500));
 }
 

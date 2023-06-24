@@ -6,7 +6,7 @@ class ScaleTransitionPage extends StatefulWidget {
   const ScaleTransitionPage({Key? key}) : super(key: key);
 
   @override
-  _ScaleTransitionPageState createState() =>
+  State<ScaleTransitionPage> createState() =>
       _ScaleTransitionPageState(const Duration(milliseconds: 1000));
 }
 

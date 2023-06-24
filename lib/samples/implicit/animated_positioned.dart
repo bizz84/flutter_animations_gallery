@@ -8,7 +8,8 @@ class AnimatedPositionedPage extends ConsumerStatefulWidget {
   const AnimatedPositionedPage({Key? key}) : super(key: key);
 
   @override
-  _AnimatedPositionedPageState createState() => _AnimatedPositionedPageState();
+  ConsumerState<AnimatedPositionedPage> createState() =>
+      _AnimatedPositionedPageState();
 }
 
 class _AnimatedPositionedPageState

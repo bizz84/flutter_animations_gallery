@@ -7,7 +7,7 @@ class StopwatchPage extends StatefulWidget {
   const StopwatchPage({Key? key}) : super(key: key);
 
   @override
-  _StopwatchPageState createState() => _StopwatchPageState();
+  State<StopwatchPage> createState() => _StopwatchPageState();
 }
 
 class _StopwatchPageState extends State<StopwatchPage> {

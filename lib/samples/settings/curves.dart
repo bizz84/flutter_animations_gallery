@@ -66,7 +66,7 @@ class CurvesPage extends StatefulWidget {
   const CurvesPage({Key? key}) : super(key: key);
 
   @override
-  _CurvesPageState createState() =>
+  AnimationControllerState<CurvesPage> createState() =>
       _CurvesPageState(const Duration(milliseconds: 1500));
 }
 

@@ -9,7 +9,7 @@ class AnimatedRingPage extends StatefulWidget {
   const AnimatedRingPage({Key? key}) : super(key: key);
 
   @override
-  _AnimatedRingPageState createState() =>
+  State<AnimatedRingPage> createState() =>
       _AnimatedRingPageState(const Duration(milliseconds: 750));
 }
 

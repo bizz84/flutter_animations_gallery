@@ -10,7 +10,8 @@ class AnimatedContainerPage extends ConsumerStatefulWidget {
   const AnimatedContainerPage({Key? key}) : super(key: key);
 
   @override
-  _AnimatedContainerPageState createState() => _AnimatedContainerPageState();
+  ConsumerState<AnimatedContainerPage> createState() =>
+      _AnimatedContainerPageState();
 }
 
 class _AnimatedContainerPageState extends ConsumerState<AnimatedContainerPage> {
@@ -44,8 +45,8 @@ class _AnimatedContainerPageState extends ConsumerState<AnimatedContainerPage> {
     return PageScaffold(
       title: 'AnimatedContainer',
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.play_arrow),
         onPressed: _randomize,
+        child: const Icon(Icons.play_arrow),
       ),
       body: Center(
         child: AnimatedContainer(

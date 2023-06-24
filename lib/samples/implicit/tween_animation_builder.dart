@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
 import 'package:flutter_animations_gallery/samples/settings/duration.dart';
@@ -8,7 +7,7 @@ class TweenAnimationBuilderPage extends ConsumerStatefulWidget {
   const TweenAnimationBuilderPage({Key? key}) : super(key: key);
 
   @override
-  _TweenAnimationBuilderPageState createState() =>
+  ConsumerState<TweenAnimationBuilderPage> createState() =>
       _TweenAnimationBuilderPageState();
 }
 
