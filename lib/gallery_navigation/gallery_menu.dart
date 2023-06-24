@@ -21,7 +21,8 @@ final availablePages = <String, WidgetBuilder>{
   // implicit animations
   'AnimatedContainer': (_) => const AnimatedContainerPage(),
   'AnimatedPositioned': (_) => const AnimatedPositionedPage(),
-  'TweenAnimationBuilder (translation)': (_) => const TweenAnimationBuilderPage(),
+  'TweenAnimationBuilder (translation)': (_) =>
+      const TweenAnimationBuilderPage(),
   // explicit animations
   'ScaleTransition': (_) => const ScaleTransitionPage(),
   'RotationTransition': (_) => const RotationTransitionPage(),
@@ -56,7 +57,7 @@ final selectedPageKeyProvider = StateProvider<String>((ref) {
 });
 
 final selectedPageBuilderProvider = Provider<WidgetBuilder>((ref) {
-  final selectedPageKey = ref.watch(selectedPageKeyProvider).state;
+  final selectedPageKey = ref.watch(selectedPageKeyProvider);
   return availablePages[selectedPageKey]!;
 });
 
@@ -64,8 +65,8 @@ class GalleryMenu extends ConsumerWidget {
   const GalleryMenu({Key? key}) : super(key: key);
 
   void _selectPage(BuildContext context, WidgetRef ref, String pageName) {
-    if (ref.read(selectedPageKeyProvider).state != pageName) {
-      ref.read(selectedPageKeyProvider).state = pageName;
+    if (ref.read(selectedPageKeyProvider) != pageName) {
+      ref.read(selectedPageKeyProvider.notifier).state = pageName;
       // dismiss drawer if we have one
       if (Scaffold.maybeOf(context)?.hasDrawer ?? false) {
         Navigator.of(context).pop();
@@ -75,8 +76,7 @@ class GalleryMenu extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedPage = ref.watch(selectedPageKeyProvider);
-    final selectedPageName = selectedPage.state;
+    final selectedPageName = ref.watch(selectedPageKeyProvider);
     return PageScaffold(
       title: 'Gallery',
       showDrawerIcon: false,

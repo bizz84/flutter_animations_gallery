@@ -54,7 +54,7 @@ final curveKeyProvider = StateProvider<String>((ref) {
 });
 
 final curveProvider = Provider<Curve>((ref) {
-  final curveKey = ref.watch(curveKeyProvider).state;
+  final curveKey = ref.watch(curveKeyProvider);
   return _allCurves[curveKey]!;
 });
 
@@ -82,7 +82,7 @@ class _CurvesPageState extends AnimationControllerState<CurvesPage> {
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, ref, _) {
-      final animateAllCurves = ref.watch(animateAllCurvesProvider).state;
+      final animateAllCurves = ref.watch(animateAllCurvesProvider);
       return PageScaffold(
         title: 'Curves',
         actions: [
@@ -92,8 +92,8 @@ class _CurvesPageState extends AnimationControllerState<CurvesPage> {
               angle: animateAllCurves ? pi / 2 : 0,
               child: Icon(animateAllCurves ? Icons.bar_chart : Icons.repeat),
             ),
-            onPressed: () =>
-                ref.read(animateAllCurvesProvider).state = !animateAllCurves,
+            onPressed: () => ref.read(animateAllCurvesProvider.notifier).state =
+                !animateAllCurves,
           ),
         ],
         body: CurvesListView(
@@ -129,7 +129,7 @@ class CurvesListView extends ConsumerWidget {
         // calculate scroll offset so that the selected curve is vertically centered when the page is first loaded
         final selectedCurveKey = ref.watch(curveKeyProvider);
         final selectedCurveIndex =
-            _allCurves.keys.toList().indexOf(selectedCurveKey.state);
+            _allCurves.keys.toList().indexOf(selectedCurveKey);
         final availableHeight = constraints.maxHeight;
         final initialScrollOffset =
             scrollOffset(selectedCurveIndex, availableHeight);
@@ -142,11 +142,11 @@ class CurvesListView extends ConsumerWidget {
             return CurveListTile(
               curve: _allCurves[curveKey]!,
               title: curveKey,
-              showAnimation:
-                  animateAllCurves || curveKey == selectedCurveKey.state,
-              isSelected: curveKey == selectedCurveKey.state,
+              showAnimation: animateAllCurves || curveKey == selectedCurveKey,
+              isSelected: curveKey == selectedCurveKey,
               animation: animation,
-              onSelected: () => ref.read(curveKeyProvider).state = curveKey,
+              onSelected: () =>
+                  ref.read(curveKeyProvider.notifier).state = curveKey,
             );
           },
           separatorBuilder: (context, index) => Container(

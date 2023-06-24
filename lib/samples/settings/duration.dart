@@ -15,7 +15,7 @@ final durationIndexProvider = StateProvider<int>((ref) {
 });
 
 final durationProvider = Provider<Duration>((ref) {
-  final durationIndex = ref.watch(durationIndexProvider).state;
+  final durationIndex = ref.watch(durationIndexProvider);
   return Duration(milliseconds: durationValues[durationIndex]);
 });
 
@@ -24,7 +24,7 @@ class DurationPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final durationIndex = ref.watch(durationIndexProvider).state;
+    final durationIndex = ref.watch(durationIndexProvider);
     final durationValue = durationValues[durationIndex];
     return PageScaffold(
       title: 'Duration',
@@ -50,8 +50,9 @@ class DurationPage extends ConsumerWidget {
                   min: 0,
                   max: durationValues.length - 1,
                   value: durationIndex.toDouble(),
-                  onChanged: (value) =>
-                      ref.read(durationIndexProvider).state = value.toInt(),
+                  onChanged: (value) => ref
+                      .read(durationIndexProvider.notifier)
+                      .state = value.toInt(),
                   divisions: 4,
                 ),
               ],
