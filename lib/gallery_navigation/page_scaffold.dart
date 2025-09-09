@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class PageScaffold extends StatelessWidget {
   const PageScaffold({
-    Key? key,
+    super.key,
     required this.title,
     this.showDrawerIcon = true,
     this.actions = const [],
     this.floatingActionButton,
     this.body,
-  }) : super(key: key);
+  });
   final String title;
   final bool showDrawerIcon;
   final List<Widget> actions;

@@ -63,7 +63,7 @@ final animateAllCurvesProvider = StateProvider<bool>((ref) {
 });
 
 class CurvesPage extends StatefulWidget {
-  const CurvesPage({Key? key}) : super(key: key);
+  const CurvesPage({super.key});
 
   @override
   AnimationControllerState<CurvesPage> createState() =>
@@ -71,7 +71,7 @@ class CurvesPage extends StatefulWidget {
 }
 
 class _CurvesPageState extends AnimationControllerState<CurvesPage> {
-  _CurvesPageState(Duration duration) : super(duration);
+  _CurvesPageState(super.duration);
 
   @override
   void initState() {
@@ -107,8 +107,7 @@ class _CurvesPageState extends AnimationControllerState<CurvesPage> {
 
 class CurvesListView extends ConsumerWidget {
   const CurvesListView(
-      {Key? key, required this.animation, required this.animateAllCurves})
-      : super(key: key);
+      {super.key, required this.animation, required this.animateAllCurves});
   final Animation<double> animation;
   final bool animateAllCurves;
 
@@ -161,7 +160,7 @@ class CurvesListView extends ConsumerWidget {
 
 class CurveListTile extends StatelessWidget {
   CurveListTile({
-    Key? key,
+    super.key,
     required this.curve,
     required this.title,
     required this.showAnimation,
@@ -171,8 +170,7 @@ class CurveListTile extends StatelessWidget {
   })  : curvedAnimation = tween.animate(CurvedAnimation(
           parent: animation,
           curve: curve,
-        )),
-        super(key: key);
+        ));
   final Curve curve;
   final String title;
   final bool showAnimation;

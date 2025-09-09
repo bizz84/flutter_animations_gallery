@@ -7,7 +7,7 @@ import 'package:flutter_animations_gallery/samples/settings/duration.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AnimatedContainerPage extends ConsumerStatefulWidget {
-  const AnimatedContainerPage({Key? key}) : super(key: key);
+  const AnimatedContainerPage({super.key});
 
   @override
   ConsumerState<AnimatedContainerPage> createState() =>

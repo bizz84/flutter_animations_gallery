@@ -4,7 +4,7 @@ import 'package:flutter_animations_gallery/samples/settings/duration.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TweenAnimationBuilderPage extends ConsumerStatefulWidget {
-  const TweenAnimationBuilderPage({Key? key}) : super(key: key);
+  const TweenAnimationBuilderPage({super.key});
 
   @override
   ConsumerState<TweenAnimationBuilderPage> createState() =>

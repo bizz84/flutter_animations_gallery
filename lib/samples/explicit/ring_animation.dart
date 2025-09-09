@@ -6,7 +6,7 @@ import 'package:flutter_animations_gallery/animation_controller_state.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
 
 class AnimatedRingPage extends StatefulWidget {
-  const AnimatedRingPage({Key? key}) : super(key: key);
+  const AnimatedRingPage({super.key});
 
   @override
   State<AnimatedRingPage> createState() =>
@@ -15,7 +15,7 @@ class AnimatedRingPage extends StatefulWidget {
 
 class _AnimatedRingPageState
     extends AnimationControllerState<AnimatedRingPage> {
-  _AnimatedRingPageState(Duration duration) : super(duration);
+  _AnimatedRingPageState(super.duration);
   late final Animation<double> _curveAnimation = animationController.drive(
     CurveTween(curve: Curves.easeInOut),
   );
@@ -65,7 +65,7 @@ class _AnimatedRingPageState
 }
 
 class Ring extends StatelessWidget {
-  const Ring({Key? key, required this.progress}) : super(key: key);
+  const Ring({super.key, required this.progress});
   final double progress;
   @override
   Widget build(BuildContext context) {

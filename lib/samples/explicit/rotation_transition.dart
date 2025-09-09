@@ -3,7 +3,7 @@ import 'package:flutter_animations_gallery/animation_controller_state.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
 
 class RotationTransitionPage extends StatefulWidget {
-  const RotationTransitionPage({Key? key}) : super(key: key);
+  const RotationTransitionPage({super.key});
 
   @override
   State<RotationTransitionPage> createState() =>
@@ -12,7 +12,7 @@ class RotationTransitionPage extends StatefulWidget {
 
 class _RotationTransitionPageState
     extends AnimationControllerState<RotationTransitionPage> {
-  _RotationTransitionPageState(Duration duration) : super(duration);
+  _RotationTransitionPageState(super.duration);
   bool _isAnimating = false;
 
   @override

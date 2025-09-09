@@ -20,7 +20,7 @@ final durationProvider = Provider<Duration>((ref) {
 });
 
 class DurationPage extends ConsumerWidget {
-  const DurationPage({Key? key}) : super(key: key);
+  const DurationPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

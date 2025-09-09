@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class SplitView extends StatelessWidget {
   const SplitView({
-    Key? key,
+    super.key,
     required this.menuBuilder,
     required this.contentBuilder,
     this.breakpoint = 600,
     this.menuWidth = 240,
-  }) : super(key: key);
+  });
   final WidgetBuilder menuBuilder;
   final WidgetBuilder contentBuilder;
   final double breakpoint;

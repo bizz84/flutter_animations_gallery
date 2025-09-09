@@ -19,7 +19,7 @@ final colorProvider = Provider<MaterialColor>((ref) {
 });
 
 class ThemeSelectionPage extends StatelessWidget {
-  const ThemeSelectionPage({Key? key}) : super(key: key);
+  const ThemeSelectionPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +47,7 @@ class ThemeSelectionPage extends StatelessWidget {
 
 class ThemeListTile extends StatelessWidget {
   const ThemeListTile(
-      {Key? key, required this.color, required this.colorName, this.onSelected})
-      : super(key: key);
+      {super.key, required this.color, required this.colorName, this.onSelected});
   final MaterialColor color;
   final String colorName;
   final VoidCallback? onSelected;

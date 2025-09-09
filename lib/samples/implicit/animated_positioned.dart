@@ -5,7 +5,7 @@ import 'package:flutter_animations_gallery/samples/settings/duration.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AnimatedPositionedPage extends ConsumerStatefulWidget {
-  const AnimatedPositionedPage({Key? key}) : super(key: key);
+  const AnimatedPositionedPage({super.key});
 
   @override
   ConsumerState<AnimatedPositionedPage> createState() =>

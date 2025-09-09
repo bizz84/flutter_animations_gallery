@@ -3,7 +3,7 @@ import 'package:flutter_animations_gallery/animation_controller_state.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
 
 class ScaleTransitionPage extends StatefulWidget {
-  const ScaleTransitionPage({Key? key}) : super(key: key);
+  const ScaleTransitionPage({super.key});
 
   @override
   State<ScaleTransitionPage> createState() =>
@@ -12,7 +12,7 @@ class ScaleTransitionPage extends StatefulWidget {
 
 class _ScaleTransitionPageState
     extends AnimationControllerState<ScaleTransitionPage> {
-  _ScaleTransitionPageState(Duration duration) : super(duration);
+  _ScaleTransitionPageState(super.duration);
 
   late final _scaleAnimation = Tween(
     begin: 0.0,

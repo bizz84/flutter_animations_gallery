@@ -6,7 +6,7 @@ import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart
 
 class StaggeredFractionallySizedBoxTransition extends AnimatedWidget {
   StaggeredFractionallySizedBoxTransition({
-    Key? key,
+    super.key,
     required Animation<double> animation,
     required int index,
     required this.child,
@@ -23,7 +23,7 @@ class StaggeredFractionallySizedBoxTransition extends AnimatedWidget {
             ),
           ),
         ),
-        super(key: key, listenable: animation);
+        super(listenable: animation);
   final Widget child;
   final Animation<double> indexedAnimation;
 
@@ -37,7 +37,7 @@ class StaggeredFractionallySizedBoxTransition extends AnimatedWidget {
 }
 
 class StaggeredAnimationsPage extends StatefulWidget {
-  const StaggeredAnimationsPage({Key? key}) : super(key: key);
+  const StaggeredAnimationsPage({super.key});
 
   @override
   State<StaggeredAnimationsPage> createState() =>
@@ -46,7 +46,7 @@ class StaggeredAnimationsPage extends StatefulWidget {
 
 class _StaggeredAnimationsPageState
     extends AnimationControllerState<StaggeredAnimationsPage> {
-  _StaggeredAnimationsPageState(Duration duration) : super(duration);
+  _StaggeredAnimationsPageState(super.duration);
 
   bool _isShowing = false;
 
@@ -107,11 +107,11 @@ class _StaggeredAnimationsPageState
 
 class StepWidgetTile extends StatelessWidget {
   const StepWidgetTile({
-    Key? key,
+    super.key,
     required this.animation,
     required this.index,
     required this.title,
-  }) : super(key: key);
+  });
   final Animation<double> animation;
   final int index;
   final String title;

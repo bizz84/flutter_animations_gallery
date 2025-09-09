@@ -4,7 +4,7 @@ import 'package:flutter_animations_gallery/custom_button.dart';
 import 'package:flutter_animations_gallery/gallery_navigation/page_scaffold.dart';
 
 class StopwatchPage extends StatefulWidget {
-  const StopwatchPage({Key? key}) : super(key: key);
+  const StopwatchPage({super.key});
 
   @override
   State<StopwatchPage> createState() => _StopwatchPageState();
@@ -66,7 +66,7 @@ class _StopwatchPageState extends State<StopwatchPage> {
 
 /// Widget that manages the Ticker and only rebuilds the UI that depends on it
 class StopwatchTickerUI extends StatefulWidget {
-  const StopwatchTickerUI({Key? key}) : super(key: key);
+  const StopwatchTickerUI({super.key});
 
   @override
   StopwatchTickerUIState createState() => StopwatchTickerUIState();
@@ -123,7 +123,7 @@ class StopwatchTickerUIState extends State<StopwatchTickerUI>
 }
 
 class ElapsedTimeText extends StatelessWidget {
-  const ElapsedTimeText({Key? key, required this.elapsed}) : super(key: key);
+  const ElapsedTimeText({super.key, required this.elapsed});
   final Duration elapsed;
 
   @override
@@ -152,7 +152,7 @@ class ElapsedTimeText extends StatelessWidget {
 }
 
 class TimeDigit extends StatelessWidget {
-  const TimeDigit(this.text, {Key? key, required this.width}) : super(key: key);
+  const TimeDigit(this.text, {super.key, required this.width});
   final String text;
   final double width;
 

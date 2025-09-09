@@ -62,7 +62,7 @@ final selectedPageBuilderProvider = Provider<WidgetBuilder>((ref) {
 });
 
 class GalleryMenu extends ConsumerWidget {
-  const GalleryMenu({Key? key}) : super(key: key);
+  const GalleryMenu({super.key});
 
   void _selectPage(BuildContext context, WidgetRef ref, String pageName) {
     if (ref.read(selectedPageKeyProvider) != pageName) {
@@ -118,11 +118,10 @@ class GalleryMenu extends ConsumerWidget {
 
 class PageListTile extends StatelessWidget {
   const PageListTile(
-      {Key? key,
+      {super.key,
       required this.selectedPageName,
       required this.pageName,
-      this.onPressed})
-      : super(key: key);
+      this.onPressed});
   final String selectedPageName;
   final String pageName;
   final VoidCallback? onPressed;
@@ -140,7 +139,7 @@ class PageListTile extends StatelessWidget {
 }
 
 class ListSectionHeader extends StatelessWidget {
-  const ListSectionHeader({Key? key, required this.title}) : super(key: key);
+  const ListSectionHeader({super.key, required this.title});
   final String title;
   @override
   Widget build(BuildContext context) {
